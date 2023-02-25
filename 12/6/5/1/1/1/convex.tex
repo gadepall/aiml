@@ -1,0 +1,69 @@
+\iffalse 
+\documentclass[12pt]{article}
+\usepackage{graphicx}
+\usepackage[none]{hyphenat}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage[english]{babel}
+\usepackage{graphicx}
+\usepackage{caption} 
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{amssymb} % for \because
+\usepackage{amsmath}   % for having text in math mode
+\usepackage{extarrows} % for Row operations arrows
+\usepackage{listings}
+\lstset{
+  frame=single,
+  breaklines=true
+}
+\usepackage{hyperref}
+\usepackage{mathtools}
+
+%Following 2 lines were added to remove the blank page at the beginning
+\usepackage{atbegshi}% http://ctan.org/pkg/atbegshi
+\AtBeginDocument{\AtBeginShipoutNext{\AtBeginShipoutDiscard}}
+
+
+%New macro definitions
+\newcommand{\mydet}[1]{\ensuremath{\begin{vmatrix}#1\end{vmatrix}}}
+\providecommand{\brak}[1]{\ensuremath{\left(#1\right)}}
+\providecommand{\sbrak}[1]{\ensuremath{{}\left[#1\right]}}
+\providecommand{\norm}[1]{\left\lVert#1\right\rVert}
+\providecommand{\abs}[1]{\left\vert#1\right\vert}
+\newcommand{\solution}{\noindent \textbf{Solution: }}
+\newcommand{\myvec}[1]{\ensuremath{\begin{pmatrix}#1\end{pmatrix}}}
+\let\vec\mathbf
+
+
+\begin{document}
+
+\begin{center}
+\title{\textbf{Convex Optimization}}
+\date{\vspace{-5ex}} %Not to print date automatically
+\maketitle
+\end{center}
+\setcounter{page}{1}
+
+\section{12$^{th}$ Maths - Chapter 6}
+This is Problem-1(i) from Exercise 6.5
+\begin{enumerate}
+		\fi
+The given function is 
+\begin{align}
+        \label{eq:/12/6/5/1/1/convEq5}
+	f\brak{x} &= \brak{2x-1}^2 + 3 \\ 
+	&= 4x^2+4x+4 \\
+	\therefore a &= 4, > 0
+\end{align}
+Hence, the function in equation \eqref{eq:/12/6/5/1/1/convEq5} is convex
+	from \ref{prop:app/convconvconvex_def}.
+%
+The figure is as shown in Fig\ref{fig:/12/6/5/1/1/convFig1}
+\begin{figure}[!h]
+	\begin{center}
+		\includegraphics[width=\columnwidth]{12/6/5/1/1/1/figs/opt2.pdf}
+	\end{center}
+\caption{}
+\label{fig:/12/6/5/1/1/convFig1}
+\end{figure}

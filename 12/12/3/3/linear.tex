@@ -1,0 +1,112 @@
+\iffalse
+\documentclass{article}
+% Language setting
+% Replace `english' with e.g. `spanish' to change the document language
+\usepackage[english]{babel}
+% Set page size and margins
+% Replace `letterpaper' with `a4paper' for UK/EU standard size
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+% Useful packages
+\usepackage{multicol}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[framemethod=tikz]{mdframed}
+\usepackage{array}
+\usepackage{blindtext}
+%\usepackage[paperwidth=10cm]{geometry}
+\usepackage{tkz-euclide}
+%\usepackage{tikz}
+\usetikzlibrary{
+  circuits.logic,
+  circuits.logic.US,
+  positioning
+}
+
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\newcommand{\myvec}[1]{\ensuremath{\begin{pmatrix}#1\end{pmatrix}}}
+\providecommand{\norm}[1]{\left\lVert#1\right\rVert}
+\let\vec\mathbf
+\title{Optimization Assignment-1}
+\author{Anusha Jella}
+\begin{document}
+\maketitle
+\newtheorem{theorem}{Theorem}[section]
+\begin{multicols}{2}
+
+\paragraph{\begin{flushleft}\textbf{Problem: }
+	\fi
+A dietician wishes to mix together two kinds of food X and Y in such away that the mixture contains atleast 10 units of vitamin A ,12 units of vitamin B and 8 units of vitamin C .The vitamin contents of one kg food is given below
+\iffalse
+\end{flushleft}}
+\resizebox{6.5cm}{!}
+{
+	\fi
+	\begin{table}[!ht]
+		\centering
+\begin{tabular}{|c|c|c|c|}
+	\hline
+	\textbf{Food}&\textbf{Vitamin A}&\textbf{Vitamin B}&\textbf{Vitamin C}\\
+	\hline
+	\textbf{X}&1&2&3\\
+	\hline
+	\textbf{Y}&2&2&1\\
+	\hline
+\end{tabular}
+		\caption{}
+		\label{fig:12/12/3/3}
+\end{table}
+One kg of food X costs Rs 16 and one kg of food Y costs Rs 20. Find the least
+cost of the mixture which will produce the required diet.
+\\
+\solution
+	\iffalse
+	\begin{figure}[!ht]
+		\centering
+		\includegraphics[width=\columnwidth]{12/12/3/3/figs/opt_fig1.pdf}
+		\caption{}
+		\label{fig:12/12/3/3}
+  	\end{figure}
+\end{flushleft}
+\includegraphics[scale=0.5]{opt_fig1.pdf} 
+\section*{Solution}
+\begin{flushleft}
+Let mixture contains x units of food X,y units of food Y.\\
+According to given problem, problem can be formulated as,\\
+\end{flushleft}
+\begin{align}
+P=min(16x+20y)
+\end{align}
+where P is minimum cost of mixture.\\
+for Vitamin A
+\begin{align}
+x+2y \geq10
+\end{align}
+for Vitamin B
+\begin{align}
+2x+2y \geq 12
+\end{align}
+for Vitamin C
+\begin{align}
+3x+y \geq 8
+\end{align}
+mixture contains both X,Y so,
+\begin{align}
+x\geq0,y\geq0
+\end{align}
+eq 1 and 2 to 5 can be expressed in vector form as
+\begin{align*}
+\vec{P}=min\myvec{16 \hspace{0.2cm}20}\vec{x}\\
+\myvec{1 \hspace{0.2cm} 2\\
+       2 \hspace{0.2cm} 2\\
+       3 \hspace{0.2cm} 1\\
+       1 \hspace{0.2cm}0\\
+       0 \hspace{0.2cm} 1}\vec{x}\geq \myvec{10 \\12\\8\\0\\0}
+\end{align*}
+Solving above equations using cvxpy, we get\\
+\vspace{0.1cm}\\
+$P_{min}$=120\\
+$\vec{x}$=$\myvec{2\\4}$
+\end{multicols}{2}
+\end{document}
+\fi

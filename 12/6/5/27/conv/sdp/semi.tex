@@ -1,0 +1,16 @@
+
+ We
+    apply the semidefinite relaxation to get the following problem.
+    \begin{align}
+        \min_{\vec{X}}&\textrm{ tr}\brak{\vec{CX}} \label{eq:12/6/5/27/conv/sdp/sdp-cost} \\
+        \textrm{s.t. }&\textrm{ tr}\brak{\vec{AX}} \le 0 \label{eq:12/6/5/27/conv/sdp/sdp-constr} \\
+                      &\vec{X} \succeq 0
+    \end{align}
+    where
+    \begin{align}
+        \vec{C} &= \myvec{\vec{I}&-\vec{P}\\-\vec{P}^\top&\norm{\vec{P}}^2} \label{eq:12/6/5/27/conv/sdp/C-def} \\
+        \vec{A} &= \myvec{\vec{V}&\vec{u}\\\vec{u}^\top&f} \label{eq:12/6/5/27/conv/sdp/A-def}
+    \end{align}
+
+    The problem is solved using \textit{cvxpy}. 
+

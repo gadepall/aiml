@@ -1,0 +1,113 @@
+
+\documentclass[12pt]{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{gensymb}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage[latin1]{inputenc}
+\usepackage{fullpage}
+\usepackage{color}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{calc}
+\usepackage{multirow}
+\usepackage{hhline}
+\usepackage{ifthen}
+\usepackage{lscape}
+\usepackage{float}
+\usepackage{amssymb}
+
+\newcommand{\mydet}[1]{\ensuremath{\begin{vmatrix}#1\end{vmatrix}}}
+\providecommand{\brak}[1]{\ensuremath{\left(#1\right)}}
+\providecommand{\norm}[1]{\left\lVert#1\right\rVert}
+\providecommand{\abs}[1]{\left\vert#1\right\vert}
+\newcommand{\solution}{\noindent \textbf{Solution: }}
+\newcommand{\myvec}[1]{\ensuremath{\begin{pmatrix}#1\end{pmatrix}}}
+\let\vec\mathbf
+
+\def\inputGnumericTable{}
+
+\begin{document}
+\begin{center}
+\textbf\large{OPTIMIZATION}
+
+\end{center}
+\section*{Excercise 6.6}
+
+Q4. Find the equation of normal to the curve $x^2=4y$ which passes through the point (4,-2)
+
+\solution
+The given equation of the curve can be written as  
+\begin{align}
+	\label{eq:parabolaEq2}
+	g\brak{\vec{x}} = \vec{x}^\top\vec{V}\vec{x} + 2\vec{u}^\top\vec{x} + f = 0 
+\end{align}
+where
+\begin{align}
+	\label{eq:eqV}
+	\vec{V} &= \myvec{ 1 & 0 \\ 0 & 0} \\
+	\label{eq:eqU}
+	\vec{u} &= \myvec{0 \\ -2} \\
+	\label{eq:eqF}
+	f &= 0 
+\end{align}
+We are given that 
+\begin{align}
+	\vec{h} &= \myvec{4 \\ -2}
+\end{align}
+This can be formulated as optimization problem as below:
+\begin{align}
+	\label{eq:Eq3}
+	&  \min_{\vec{x}} \quad \text{f}\brak{\vec{x}} = \norm{\vec{x}-\vec{h}}^2\\
+	\label{eq:Eq4}
+	& \text{s.t.}\quad g\brak{\vec{x}} = \vec{x}^\top\vec{V}\vec{x} + 2\vec{u}^\top\vec{x} + f = 0  
+\end{align}
+Now,
+\begin{align}
+	\norm{\vec{x}-\vec{h}}^2 &= \norm{\vec{x}}^2 - 2\vec{h}^\top\vec{x}+\norm{\vec{h}}^2\\
+	&= \vec{y}^\top\vec{C}\vec{y}
+\end{align}
+where,
+\begin{align}
+	\vec{C} = \myvec{\vec{I}&-\vec{h}\\-\vec{h}^\top& \norm{h}^2} \text{ and }
+	\vec{y} = \myvec{\vec{x}\\1}
+\end{align}
+And equation \eqref{eq:Eq4} can be expressed as
+\begin{align}
+	\vec{y}^\top\vec{A}\vec{y} = 0
+\end{align}
+where
+\begin{align}
+	\vec{A} = \myvec{\vec{V}&\vec{u}\\\vec{u}^\top & f}
+\end{align}
+Using SDR(Semi Definite Relaxation), \eqref{eq:Eq3} can be expressed as
+\begin{align}
+	& \min_{\vec{X}} tr\brak{\vec{C}\vec{X}}\\
+	& \text{s.t. } tr\brak{\vec{A}\vec{X}} = 0\\
+	& \vec{X} \succcurlyeq \vec{0}
+\end{align}
+On solving it yields to the point
+\begin{align}
+	\vec{x} = \myvec{1.695\\0.718}
+\end{align}
+This is same as we obtained in Gradient Descent and Lagrange multiplier. Hence this is the required point.
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

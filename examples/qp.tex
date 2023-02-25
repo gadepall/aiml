@@ -1,0 +1,36 @@
+
+\begin{enumerate}[label=\thechapter.\arabic*,ref=\thechapter.\theenumi]
+\numberwithin{equation}{enumi}
+\numberwithin{figure}{enumi}
+\numberwithin{table}{enumi}
+ \item Find the point on the curve 
+    \begin{align}
+        x^2 = 2y
+        \label{eq:12/6/5/27/conv/conv/curve}
+    \end{align}
+    which is nearest to the point $\vec{P} = \myvec{2\\1}$.
+			\\
+\solution 
+\label{12/6/5/27/conv/conv}
+\input{12/6/5/27/conv/conv/conv.tex} 
+
+		We need to find
+
+		or semidefinite programming (SDP). In the case of the latter, we
+    apply the semidefinite relaxation to get the following problem.
+    \begin{align}
+        \min_{\vec{X}}&\textrm{ tr}\brak{\vec{CX}} \label{eq:12/6/5/27/conv/conv/sdp-cost} \\
+        \textrm{s.t. }&\textrm{ tr}\brak{\vec{AX}} \le 0 \label{eq:12/6/5/27/conv/conv/sdp-constr} \\
+                      &\vec{X} \succeq 0
+    \end{align}
+    where
+    \begin{align}
+        \vec{C} &= \myvec{\vec{I}&-\vec{P}\\-\vec{P}^\top&\norm{\vec{P}}^2} \label{eq:12/6/5/27/conv/conv/C-def} \\
+        \vec{A} &= \myvec{\vec{V}&\vec{u}\\\vec{u}^\top&f} \label{eq:12/6/5/27/conv/conv/A-def}
+    \end{align}
+
+    The problem is solved using \textit{cvxpy} in the Python codes 
+    \texttt{codes/parab\_qp.py} using QP and \texttt{codes/parab\_sdp.py}
+    using SDP.
+
+\end{enumerate}

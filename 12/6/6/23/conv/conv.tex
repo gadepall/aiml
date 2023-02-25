@@ -1,0 +1,78 @@
+\iffalse
+\documentclass[12pt]{article}
+\usepackage{graphicx}
+\usepackage[none]{hyphenat}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage[english]{babel}
+\usepackage{graphicx}
+\usepackage{caption} 
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{amssymb} % for \because
+\usepackage{amsmath}   % for having text in math mode
+\usepackage{extarrows} % for Row operations arrows
+\usepackage{listings}
+\lstset{
+  frame=single,
+  breaklines=true
+}
+\usepackage{hyperref}
+  
+%Following 2 lines were added to remove the blank page at the beginning
+\usepackage{atbegshi}% http://ctan.org/pkg/atbegshi
+\AtBeginDocument{\AtBeginShipoutNext{\AtBeginShipoutDiscard}}
+\usepackage{gensymb}
+
+
+%New macro definitions
+\newcommand{\mydet}[1]{\ensuremath{\begin{vmatrix}#1\end{vmatrix}}}
+\providecommand{\brak}[1]{\ensuremath{\left(#1\right)}}
+\providecommand{\sbrak}[1]{\ensuremath{{}\left[#1\right]}}
+\providecommand{\norm}[1]{\left\lVert#1\right\rVert}
+\providecommand{\abs}[1]{\left\vert#1\right\vert}
+\newcommand{\solution}{\noindent \textbf{Solution: }}
+\newcommand{\myvec}[1]{\ensuremath{\begin{pmatrix}#1\end{pmatrix}}}
+\let\vec\mathbf
+
+
+\begin{document}
+
+\begin{center}
+	\title{\textbf{Quadratric Programming}}
+\date{\vspace{-5ex}} %Not to print date automatically
+\maketitle
+\end{center}
+\setcounter{page}{1}
+
+\section{12$^{th}$ Maths - Chapter 6}
+This is Problem-23 from Exercise 6.6 
+\begin{enumerate}
+
+\solution 
+\fi
+The given equation of the curve can be written as  
+\begin{align}
+	\label{eq:12/6/6/23/conv/parabolaEq2}
+	g\brak{\vec{x}} = \vec{x}^T\vec{V}\vec{x} + 2\vec{u}^T\vec{x} + f = 0 
+\end{align}
+The given problem can be formulated as 
+\begin{align}
+	\label{eq:12/6/6/23/conv/Eq3}
+	&  \min_{\vec{x}} \quad \text{f}\brak{\vec{x}} = \norm{\vec{x}-\vec{h}}^2\\
+	\label{eq:12/6/6/23/conv/Eq4}
+	& \text{s.t.}\quad g\brak{\vec{x}} = \vec{x}^T\vec{V}\vec{x} + 2\vec{u}^T\vec{x} + f = 0  
+\end{align}
+where
+\begin{align}
+	\vec{V} = \myvec{ 1 & 0 \\ 0 & 0},\,
+	\vec{u} = \myvec{0 \\ -2},\, 
+	f = 0,\,
+	\vec{h} = \myvec{1 \\ 2}
+\end{align}
+The optimization problem is nonconvex. However, by relaxing the constraint in \eqref{eq:12/6/6/23/conv/Eq4} as
+\begin{align}
+	\label{eq:12/6/6/23/conv/Eq7}
+	& g\brak{\vec{x}} = \vec{x}^T\vec{V}\vec{x} + 2\vec{u}^T\vec{x} + f \le 0  
+\end{align}
+the optimization problem can be made convex. Using cvxpy, input the objective function, contraints and solve. However, resultant optimal point is the given point itself. This is because, the point is inside the parabola. Looks like, this is a limitation of cvxpy.

@@ -1,0 +1,187 @@
+\iffalse
+\documentclass[journal,12pt,twocolumn]{IEEEtran}
+\usepackage{setspace}
+\usepackage{gensymb}
+\singlespacing
+\usepackage[cmex10]{amsmath}
+\usepackage{amsthm}
+\usepackage{mathrsfs}
+\usepackage{txfonts}
+\usepackage{stfloats}
+\usepackage{bm}
+\usepackage{cite}
+\usepackage{cases}
+\usepackage{subfig}
+\usepackage{longtable}
+\usepackage{multirow}
+\usepackage{enumitem}
+\usepackage{mathtools}
+\usepackage{tikz}
+\usepackage{circuitikz}
+\usepackage{verbatim}
+\usepackage[breaklinks=true]{hyperref}
+\usepackage{tkz-euclide} % loads  TikZ and tkz-base
+\usepackage{listings}
+\usepackage{color}    
+\usepackage{array}    
+\usepackage{longtable}
+\usepackage{calc}     
+\usepackage{multirow} 
+\usepackage{hhline}   
+\usepackage{ifthen}   
+\usepackage{lscape}     
+\usepackage{chngcntr}
+\DeclareMathOperator*{\Res}{Res}
+\renewcommand\thesection{\arabic{section}}
+\renewcommand\thesubsection{\thesection.\arabic{subsection}}
+\renewcommand\thesubsubsection{\thesubsection.\arabic{subsubsection}}
+
+\renewcommand\thesectiondis{\arabic{section}}
+\renewcommand\thesubsectiondis{\thesectiondis.\arabic{subsection}}
+\renewcommand\thesubsubsectiondis{\thesubsectiondis.\arabic{subsubsection}}
+\renewcommand\thetable{\arabic{table}}
+% correct bad hyphenation here
+\hyphenation{op-tical net-works semi-conduc-tor}
+\def\inputGnumericTable{}                                 %%
+
+\lstset{
+%language=C,
+frame=single, 
+breaklines=true,
+columns=fullflexible
+}
+%\lstset{
+%language=tex,
+%frame=single, 
+%breaklines=true
+%}
+
+\begin{document}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{problem}{Problem}
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{example}{Example}[section]
+\newtheorem{definition}[problem]{Definition}
+\newcommand{\BEQA}{\begin{eqnarray}}
+\newcommand{\EEQA}{\end{eqnarray}}
+\newcommand{\define}{\stackrel{\triangle}{=}}
+\bibliographystyle{IEEEtran}
+\providecommand{\mbf}{\mathbf}
+\providecommand{\pr}[1]{\ensuremath{\Pr\left(#1\right)}}
+\providecommand{\qfunc}[1]{\ensuremath{Q\left(#1\right)}}
+\providecommand{\sbrak}[1]{\ensuremath{{}\left[#1\right]}}
+\providecommand{\lsbrak}[1]{\ensuremath{{}\left[#1\right.}}
+\providecommand{\rsbrak}[1]{\ensuremath{{}\left.#1\right]}}
+\providecommand{\brak}[1]{\ensuremath{\left(#1\right)}}
+\providecommand{\lbrak}[1]{\ensuremath{\left(#1\right.}}
+\providecommand{\rbrak}[1]{\ensuremath{\left.#1\right)}}
+\providecommand{\cbrak}[1]{\ensuremath{\left\{#1\right\}}}
+\providecommand{\lcbrak}[1]{\ensuremath{\left\{#1\right.}}
+\providecommand{\rcbrak}[1]{\ensuremath{\left.#1\right\}}}
+\theoremstyle{remark}
+\newtheorem{rem}{Remark}
+\newcommand{\sgn}{\mathop{\mathrm{sgn}}}
+\providecommand{\abs}[1]{\left\vert#1\right\vert}
+\providecommand{\res}[1]{\Res\displaylimits_{#1}} 
+\providecommand{\norm}[1]{\left\lVert#1\right\rVert}
+\providecommand{\mtx}[1]{\mathbf{#1}}
+\providecommand{\mean}[1]{E\left[ #1 \right]}
+\providecommand{\fourier}{\overset{\mathcal{F}}{ \rightleftharpoons}}
+\providecommand{\system}[1]{\overset{\mathcal{#1}}{ \longleftrightarrow}}
+\newcommand{\solution}{\noindent \textbf{Solution: }}
+\newcommand{\cosec}{\,\text{cosec}\,}
+\providecommand{\dec}[2]{\ensuremath{\overset{#1}{\underset{#2}{\gtrless}}}}
+\newcommand{\myvec}[1]{\ensuremath{\begin{pmatrix}#1\end{pmatrix}}}
+\newcommand{\mydet}[1]{\ensuremath{\begin{vmatrix}#1\end{vmatrix}}}
+\let\vec\mathbf
+\def\putbox#1#2#3{\makebox[0in][l]{\makebox[#1][l]{}\raisebox{\baselineskip}[0in][0in]{\raisebox{#2}[0in][0in]{#3}}}}
+     \def\rightbox#1{\makebox[0in][r]{#1}}
+     \def\centbox#1{\makebox[0in]{#1}}
+     \def\topbox#1{\raisebox{-\baselineskip}[0in][0in]{#1}}
+     \def\midbox#1{\raisebox{-0.5\baselineskip}[0in][0in]{#1}}
+
+\vspace{3cm}
+\title{Optimization Assignment}
+\author{Gautam Singh}
+\maketitle
+\bigskip
+
+\begin{abstract}
+    This document contains the solution to Question 4 of Exercise 2 in Chapter
+    10 of the class 11 NCERT textbook.
+\end{abstract}
+
+\begin{enumerate}
+  
+    \solution 
+\fi
+		Any point on \eqref{eq:11/10/3/14/grad/line} is clearly of the form
+    \begin{align}
+        \vec{Q} = \vec{A} + \lambda\vec{m}
+        \label{eq:11/10/3/14/grad/Q-def}
+    \end{align}
+    where $\lambda \in \mathbb{R}$ and
+    \begin{align}
+        \vec{A} = \myvec{0\\-4},\ \vec{m} = \myvec{4\\3}
+        \label{eq:11/10/3/14/grad/vals}
+    \end{align}
+    Thus,
+    \begin{align}
+        f\brak{\lambda} &= \norm{\vec{Q}-\vec{P}}^2 \\
+                        &= \norm{\vec{A}-\vec{P}+\lambda\vec{m}}^2 \\
+                        &= \norm{\vec{m}}^2\lambda^2 + 2\vec{m}^\top\brak{\vec{A}-\vec{P}}\lambda + \norm{\vec{A}-\vec{P}}^2
+                        \label{eq:11/10/3/14/grad/dist-lambda}
+    \end{align}
+    Since \eqref{eq:11/10/3/14/grad/dist-lambda} is convex, we use the gradient descent function 
+    on $\lambda$ to converge at the minimum of $f\brak{\lambda}$.
+    \begin{align}
+        \lambda_{n+1} &= \lambda_n - \alpha f'\brak{\lambda_n} \\
+                      &= \brak{1-2\alpha\norm{\vec{m}}^2}\lambda_n + 2\alpha\vec{m}^\top\brak{\vec{A}-\vec{P}}
+                      \label{eq:11/10/3/14/grad/diff-eqn}
+    \end{align}
+    Taking the one-sided $Z$-transform on both sides of \eqref{eq:11/10/3/14/grad/diff-eqn},
+    \begin{align}
+        z\Lambda\brak{z} &= \brak{1-2\alpha\norm{\vec{m}}^2}\Lambda\brak{z} - \frac{2\alpha\vec{m}^\top\brak{\vec{A}-\vec{P}}}{1-z^{-1}}
+        \label{eq:11/10/3/14/grad/Z-trans-eqn}
+    \end{align}
+    Solving \eqref{eq:11/10/3/14/grad/Z-trans-eqn}
+    \begin{align}
+        &\Lambda\brak{z} = -\frac{2\alpha\vec{m}^\top\brak{\vec{A}-\vec{P}}z^{-1}}{\brak{1- z^{-1}}\brak{1 - \brak{1-2\alpha\norm{\vec{m}}^2}z^{-1}}} \label{eq:11/10/3/14/grad/roc} \\
+        &= -\frac{\vec{m}^\top\brak{\vec{A}-\vec{P}}}{\norm{\vec{m}}^2}\lbrak{\frac{1}{1-z^{-1}}} \\
+        &\rbrak{- \frac{1}{1-\brak{1-2\alpha\norm{\vec{m}}^2}z^{-1}}} \\
+        &= \frac{\vec{m}^\top\brak{\vec{A}-\vec{P}}}{\norm{\vec{m}}^2}\sum_{k=0}^{\infty}\brak{1-\brak{1-2\alpha\norm{\vec{m}}^2}^k}z^{-k}
+        \label{eq:11/10/3/14/grad/lambda-z-trans}
+    \end{align}
+    From \eqref{eq:11/10/3/14/grad/roc}, the ROC is
+    \begin{align}
+        \abs{z} &> \max\cbrak{1,1-2\alpha\norm{\vec{m}}^2} \\
+        \implies 0 &< 1 - 2\alpha\norm{\vec{m}}^2 < 1 \\
+        \implies 0 &< \alpha < \frac{1}{2\norm{\vec{m}}^2}
+        \label{eq:11/10/3/14/grad/alpha-constr}
+    \end{align}
+    Thus, if $\alpha$ satisfies \eqref{eq:11/10/3/14/grad/alpha-constr}, then from 
+    \eqref{eq:11/10/3/14/grad/lambda-z-trans}, substituting from \eqref{eq:11/10/3/14/grad/vals},
+    \begin{align}
+        \lim_{n\to\infty}\lambda_n &= -\frac{\vec{m}^\top\brak{\vec{A}-\vec{P}}}{\norm{\vec{m}^2}}                                  \label{eq:11/10/3/14/grad/conv}
+                                   &= \frac{17}{25}
+    \end{align}
+    We select the following parameters to arrive at the optimal $\lambda$,
+    where $N$ is the number of iterations and $\epsilon$ is the convergence 
+    limit. The gradient descent is demonstrated in Fig. \ref{fig:11/10/3/14/grad/grad-desc},
+    plotted by the Python code. The relevant
+    parameters are shown in Table \ref{tab:11/10/3/14/grad/param}.
+    \begin{table}[!ht]
+        \centering
+        \input{11/10/3/14/grad/tables/11.10.03.14_1.tex}
+        \caption{Parameters for Gradient Descent}
+        \label{tab:11/10/3/14/grad/param}
+    \end{table}
+
+    \begin{figure}[!ht]
+        \centering
+        \includegraphics[width=\columnwidth]{11/10/3/14/grad/figs/grad_desc.png}
+        \caption{Gradient descent to get the optimal $\lambda$.}
+        \label{fig:11/10/3/14/grad/grad-desc}
+    \end{figure}

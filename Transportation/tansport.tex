@@ -1,0 +1,589 @@
+\documentclass[journal,12pt,twocolumn]{IEEEtran}
+%
+\usepackage{setspace}
+\usepackage{gensymb}
+\usepackage{xcolor}
+\usepackage{caption}
+\usepackage{chngcntr}
+%\usepackage{subcaption}
+%\doublespacing
+\singlespacing
+\usepackage{multicol}
+%\usepackage{graphicx}
+%\usepackage{amssymb}
+%\usepackage{relsize}
+\usepackage[cmex10]{amsmath}
+\usepackage{mathtools}
+%\usepackage{amsthm}
+%\interdisplaylinepenalty=2500
+%\savesymbol{iint}
+%\usepackage{txfonts}
+%\restoresymbol{TXF}{iint}
+%\usepackage{wasysym}
+\usepackage{amsthm}
+\usepackage{mathrsfs}
+\usepackage{txfonts}
+\usepackage{stfloats}
+\usepackage{cite}
+\usepackage{cases}
+\usepackage{subfig}
+%\usepackage{xtab}
+\usepackage{longtable}
+\usepackage{multirow}
+%\usepackage{algorithm}
+%\usepackage{algpseudocode}
+\usepackage{enumerate}
+\usepackage{mathtools}
+%\usepackage{iithtlc}
+%\usepackage[framemethod=tikz]{mdframed}
+\usepackage{listings}
+    \usepackage[latin1]{inputenc}                                 %%
+    \usepackage{color}                                            %%
+    \usepackage{array}                                            %%
+    \usepackage{longtable}                                        %%
+    \usepackage{calc}                                             %%
+    \usepackage{multirow}                                         %%
+    \usepackage{hhline}                                           %%
+    \usepackage{ifthen}                                           %%
+  %optionally (for landscape tables embedded in another document): %%
+    \usepackage{lscape}     
+
+%\usepackage{stmaryrd}
+
+
+%\usepackage{wasysym}
+%\newcounter{MYtempeqncnt}
+\DeclareMathOperator*{\Res}{Res}
+%\renewcommand{\baselinestretch}{2}
+\renewcommand\thesection{\arabic{section}}
+\renewcommand\thesubsection{\thesection.\arabic{subsection}}
+\renewcommand\thesubsubsection{\thesubsection.\arabic{subsubsection}}
+
+\renewcommand\thesectiondis{\arabic{section}}
+\renewcommand\thesubsectiondis{\thesectiondis.\arabic{subsection}}
+\renewcommand\thesubsubsectiondis{\thesubsectiondis.\arabic{subsubsection}}
+
+% correct bad hyphenation here
+\hyphenation{op-tical net-works semi-conduc-tor}
+
+\def\inputGnumericTable{}  
+
+\lstset{
+language=python,
+frame=single, 
+breaklines=true
+}
+\newcommand\bigzero{\makebox(0,0){\text{\huge0}}}
+%\lstset{
+	%%basicstyle=\small\ttfamily\bfseries,
+	%%numberstyle=\small\ttfamily,
+	%language=Octave,
+	%backgroundcolor=\color{white},
+	%%frame=single,
+	%%keywordstyle=\bfseries,
+	%%breaklines=true,
+	%%showstringspaces=false,
+	%%xleftmargin=-10mm,
+	%%aboveskip=-1mm,
+	%%belowskip=0mm
+%}
+
+%\surroundwithmdframed[width=\columnwidth]{lstlisting}
+
+
+\begin{document}
+%
+
+\theoremstyle{definition}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{problem}{Problem}
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{example}{Example}[section]
+\newtheorem{definition}{Definition}[section]
+%\newtheorem{algorithm}{Algorithm}[section]
+%\newtheorem{cor}{Corollary}
+\newcommand{\BEQA}{\begin{eqnarray}}
+\newcommand{\EEQA}{\end{eqnarray}}
+\newcommand{\define}{\stackrel{\triangle}{=}}
+
+\bibliographystyle{IEEEtran}
+%\bibliographystyle{ieeetr}
+
+\providecommand{\nCr}[2]{\,^{#1}C_{#2}} % nCr
+\providecommand{\nPr}[2]{\,^{#1}P_{#2}} % nPr
+\providecommand{\mbf}{\mathbf}
+\providecommand{\pr}[1]{\ensuremath{\Pr\left(#1\right)}}
+\providecommand{\qfunc}[1]{\ensuremath{Q\left(#1\right)}}
+\providecommand{\sbrak}[1]{\ensuremath{{}\left[#1\right]}}
+\providecommand{\lsbrak}[1]{\ensuremath{{}\left[#1\right.}}
+\providecommand{\rsbrak}[1]{\ensuremath{{}\left.#1\right]}}
+\providecommand{\brak}[1]{\ensuremath{\left(#1\right)}}
+\providecommand{\lbrak}[1]{\ensuremath{\left(#1\right.}}
+\providecommand{\rbrak}[1]{\ensuremath{\left.#1\right)}}
+\providecommand{\cbrak}[1]{\ensuremath{\left\{#1\right\}}}
+\providecommand{\lcbrak}[1]{\ensuremath{\left\{#1\right.}}
+\providecommand{\rcbrak}[1]{\ensuremath{\left.#1\right\}}}
+\theoremstyle{remark}
+\newtheorem{rem}{Remark}
+\newcommand{\sgn}{\mathop{\mathrm{sgn}}}
+\providecommand{\abs}[1]{\left\vert#1\right\vert}
+\providecommand{\res}[1]{\Res\displaylimits_{#1}} 
+\providecommand{\norm}[1]{\lVert#1\rVert}
+\providecommand{\mtx}[1]{\mathbf{#1}}
+\providecommand{\mean}[1]{E\left[ #1 \right]}
+\providecommand{\fourier}{\overset{\mathcal{F}}{ \rightleftharpoons}}
+%\providecommand{\hilbert}{\overset{\mathcal{H}}{ \rightleftharpoons}}
+\providecommand{\system}{\overset{\mathcal{H}}{ \longleftrightarrow}}
+	%\newcommand{\solution}[2]{\textbf{Solution:}{#1}}
+\newcommand{\solution}{\noindent \textbf{Solution: }}
+\providecommand{\dec}[2]{\ensuremath{\overset{#1}{\underset{#2}{\gtrless}}}}
+%\numberwithin{equation}{subsection}
+\numberwithin{equation}{section}
+%\numberwithin{equation}{problem}
+%\numberwithin{problem}{subsection}
+\numberwithin{problem}{section}
+\counterwithin{table}{problem}
+%\numberwithin{definition}{subsection}
+\makeatletter
+\@addtoreset{figure}{problem}
+\makeatother
+%\makeatletter
+%\@addtoreset{table}{problem}
+%\makeatother
+
+\let\StandardTheFigure\thefigure
+%\let\StandardTheTable\thetable
+%\renewcommand{\thefigure}{\theproblem.\arabic{figure}}
+\renewcommand{\thefigure}{\theproblem}
+%\renewcommand{\thetable}{\theproblem}
+%\numberwithin{figure}{section}
+
+%\numberwithin{figure}{subsection}
+
+\def\putbox#1#2#3{\makebox[0in][l]{\makebox[#1][l]{}\raisebox{\baselineskip}[0in][0in]{\raisebox{#2}[0in][0in]{#3}}}}
+     \def\rightbox#1{\makebox[0in][r]{#1}}
+     \def\centbox#1{\makebox[0in]{#1}}
+     \def\topbox#1{\raisebox{-\baselineskip}[0in][0in]{#1}}
+     \def\midbox#1{\raisebox{-0.5\baselineskip}[0in][0in]{#1}}
+
+%\vspace{3cm}
+
+\title{
+%\logo
+Transportation Problem
+%}
+}
+%\centering \textbf{\Large Optimization}\\
+%\bigskip
+\author{D Hemanth Kumar and G V V Sharma$^{*}$% <-this % stops a space
+\thanks{* The authors are with the Department
+of Electrical Engineering, Indian Institute of Technology, Hyderabad
+502285 India e-mail:  gadepall@iith.ac.in.}% <-this % stops a space
+%\thanks{J. Doe and J. Doe are with Anonymous University.}% <-this % stops a space
+%\thanks{Manuscript received April 19, 2005; revised January 11, 2007.}}
+}
+%
+\maketitle
+%
+\begin{abstract}
+This manual explains the Northwest corner cell method, Modi Method, and using cvxopt for solving Transportation problems through examples.
+\end{abstract}
+%
+\section{Northwest Corner Cell Method}
+%\textit{Finding optimal values of linear expressions w.r.t linear constraints is called linear programming}\\
+\begin{problem}
+Find the initial basic feasible solution of the following transportation problem.
+\begin{table}[!h]
+\begin{center}
+\begin{tabular}{l  l | l l l l | l  }
+                 
+                 & S/D & 1 & 2 & 3 & 4 &  SUPPLY  \\
+\hline
+& 1 & 3 & 1 & 7 & 4 & 250 \\ 
+& 2 & 2 & 6 & 5 & 9 & 350  \\ 
+& 3 & 8 & 3 & 3 & 2 & 400 \\ 
+\hline
+&DEMAND& 200&300&350&150\\ 
+\end{tabular}
+\end{center}
+\caption{1}
+\end{table}
+
+
+\end{problem}
+\solution
+The basic feasible solution can be obtained by using Northwest corner cell method.
+\begin{enumerate}[1.]
+\item 
+Select the Northwest corner cell from the Table \ref{eq:table1}. i.e. Element $C_{11}$
+\item 
+Get the supply, demand values corresponding to $C_{11}$. 
+\item
+Allocate the min\{supply,demand\} to the element $C_{11}$. Subtract the allocated value from both supply,demand values of element $C_{11}$. Let the allocated value($x_{11}$)=200. Then the table is
+\begin{table}[!h]
+\begin{center}
+\begin{tabular}{l  l | l l l l | l  }
+                 
+                 & S/D & 1 & 2 & 3 & 4 &  SUPPLY  \\
+\hline
+& 1 & 3 & 1 & 7 & 4 & 50 \\ 
+& 2 & 2 & 6 & 5 & 9 & 350  \\ 
+& 3 & 8 & 3 & 3 & 2 & 400 \\ 
+\hline
+&DEMAND& 0&300&350&150\\ 
+\end{tabular}
+\end{center}
+\caption{2}
+\end{table}
+
+\item The column or row corresponding to zero value of demand or supply will not be considered for allocation. i.e column corresponding to $C_{11}$.
+\item Now again select the Northwest corner cell from the remaining elements of the table.  i.e. Element $C_{12}$.
+\item
+Allocate the min\{supply,demand\} to the element $C_{12}$. Subtract the allocated value from both supply,demand values of element $C_{12}$.Let the allocated value($x_{12}$)=50. Then the table is
+\begin{table}[!h]
+\begin{center}
+\begin{tabular}{l  l | l l l l | l  }
+                 
+                 & S/D & 1 & 2 & 3 & 4 &  SUPPLY  \\
+\hline
+& 1 & 3 & 1 & 7 & 4 & 0 \\ 
+& 2 & 2 & 6 & 5 & 9 & 350  \\ 
+& 3 & 8 & 3 & 3 & 2 & 400 \\ 
+\hline
+&DEMAND& 0&250&350&150\\ 
+\end{tabular}
+\end{center}
+\caption{3}
+\end{table}
+\item Row corresponding to $C_{12}$ is not considered for allocation.
+
+The other steps are given below.
+\item
+Let the allocated value($x_{22}$)=250. Then the table looks like Table.\ref{table4}
+\begin{table}[!h]
+\begin{center}
+\begin{tabular}{l  l | l l l l | l  }
+                 
+                 & S/D & 1 & 2 & 3 & 4 &  SUPPLY  \\
+\hline
+& 1 & 3 & 1 & 7 & 4 & 0 \\ 
+& 2 & 2 & 6 & 5 & 9 & 100  \\ 
+& 3 & 8 & 3 & 3 & 2 & 400 \\ 
+\hline
+&DEMAND& 0&0&350&150\\ 
+\end{tabular}
+\end{center}
+\caption{4}
+\label{table4}
+\end{table}
+\item
+Let the allocated value($x_{23}$)=100. Then the table looks like Table.\ref{table5}
+\begin{table}[!h]
+\begin{center}
+\begin{tabular}{l  l | l l l l | l  }
+                 
+                 & S/D & 1 & 2 & 3 & 4 &  SUPPLY  \\
+\hline
+& 1 & 3 & 1 & 7 & 4 & 0 \\ 
+& 2 & 2 & 6 & 5 & 9 & 0  \\ 
+& 3 & 8 & 3 & 3 & 2 & 400 \\ 
+\hline
+&DEMAND& 0&0&250&150\\ 
+\end{tabular}
+\end{center}
+\caption{5}
+\label{table5}
+\end{table}
+\item
+Let the allocated value($x_{33}$)=250. Then the table looks like Table.\ref{table6}
+\begin{table}[!h]
+\begin{center}
+\begin{tabular}{l  l | l l l l | l  }
+                 
+                 & S/D & 1 & 2 & 3 & 4 &  SUPPLY  \\
+\hline
+& 1 & 3 & 1 & 7 & 4 & 0 \\ 
+& 2 & 2 & 6 & 5 & 9 & 0  \\ 
+& 3 & 8 & 3 & 3 & 2 & 150 \\ 
+\hline
+&DEMAND& 0&0&0&150\\ 
+\end{tabular}
+\end{center}
+\caption{6}
+\label{table6}
+\end{table}
+\item
+Let the allocated value($x_{34}$)=150. Then the table looks like Table.\ref{table7}
+\begin{table}[!h]
+\begin{center}
+\begin{tabular}{l  l | l l l l | l  }
+                 
+                 & S/D & 1 & 2 & 3 & 4 &  SUPPLY  \\
+\hline
+& 1 & 3 & 1 & 7 & 4 & 0 \\ 
+& 2 & 2 & 6 & 5 & 9 & 0  \\ 
+& 3 & 8 & 3 & 3 & 2 & 0 \\ 
+\hline
+&DEMAND& 0&0&0&0\\ 
+\end{tabular}
+\end{center}
+\caption{7}
+\label{table7}
+\end{table}
+\item
+Hence, obtained basic feasible solution and by considering allocated cells
+the value is 
+\begin{equation}
+\sum_{i=1}^{3}\sum_{j=1}^{4} x_{ij}*C_{ij}
+\end{equation}
+\label{eq:total}
+\item The total cost for the given transportation problem is = 3700.
+
+
+\end{enumerate}
+
+\section{UV or MODI Method}
+
+To optimize the given feasible solution, MODI method is used.
+
+\begin{enumerate}[1.]
+\item
+Arrange the table as follows
+\begin{table}[!h]
+\begin{center}
+\begin{tabular}{| l | l | l | l | l | }
+                 \hline
+                   & $v_1$ & $v_2$ & $v_3$ & $v_4$ \\
+\hline
+$u_1$ & 3 & 1 & 7 & 4  \\ \hline
+$u_2$ & 2 & 6 & 5 & 9   \\ \hline
+$u_3$ & 8 & 3 & 3 & 2  \\ \hline
+
+\end{tabular}
+\end{center}
+\caption{8}
+\end{table}
+
+and $x_{11}=200,x_{12}=50,x_{22}=250,x_{23}=100,x_{33}=250,x_{34}=150,
+x_{13}=x_{14}=x_{21}=x_{24}=x_{31}=x_{32}=0.$
+Now we have to find out values u and v.
+\item
+Always assume $u_1$=0.Then to find other values use the given equation for allocated cells only.
+\begin{equation}
+u_i+v_j=C_{ij}
+\end{equation}
+\item After finding all values of u and v, the table looks like Table.\ref{table9}
+\begin{table}[!h]
+\begin{center}
+\begin{tabular}{| l | l | l | l | l | }
+                 \hline
+                   & $v_1$=3 & $v_2$=1 & $v_3$=0 & $v_4$=-1  \\
+\hline
+$u_1$=0 & 3 & 1 & 7 & 4  \\ \hline
+$u_2$=5 & 2 & 6 & 5 & 9   \\ \hline
+$u_3$=3 & 8 & 3 & 3 & 2  \\ \hline
+
+\end{tabular}
+\end{center}
+\caption{9}
+\label{table9}
+\end{table}
+
+\item 
+Compute the penalties for the unallocated cells using the below equation.
+\begin{equation}
+P_{ij}=u_i+v_j-C_{ij}
+\end{equation}
+\label{penalty}
+\item Penalties are
+$
+P_{13}=-7,
+P_{14}=-5,
+P_{21}=6,
+P_{24}=-5,
+P_{31}=-2,
+P_{32}=1
+$
+
+\item
+If we get all penalties as zero or less than zero then the given solution is optimal. If we get any penalty as positive, we need to proceed the problem to get optimum value.
+
+\item Select the unallocated cell, which has maximum positive penalty. i.e. $C_{21}$
+
+\item Draw a closed loop consisting only horizontal and vertical lines passing through some allocated cells only. i.e. $C_{21}C_{22}C_{12}C_{11}$.
+
+\item Give the (+) sign to the first cell in loop. Assign alternative signs to the other cells.
+
+\item Select the least allocated value from the (-) signed cells in loop. i.e. $x_{11}$=200.
+
+\item Make the cell corresponding to $x_{11}$ unallocated by adding $x_{11}$ to (+) signed cells in loop. i.e. $x_{11}$=0,$x_{21}$=200,$x_{12}$=250 and all other values remain same. Then u and v values for the modified allocated cells are in Table.\ref{table10}
+
+\begin{table}[!h]
+\begin{center}
+\begin{tabular}{| l | l | l | l | l | }
+                 \hline
+                   & $v_1$=-3 & $v_2$=1 & $v_3$=0 & $v_4$=-1  \\
+\hline
+$u_1$=0 & 3 & 1 & 7 & 4  \\ \hline
+$u_2$=5 & 2 & 6 & 5 & 9   \\ \hline
+$u_3$=3 & 8 & 3 & 3 & 2  \\ \hline
+
+\end{tabular}
+\end{center}
+\caption{10}
+\label{table10}
+\end{table}
+
+\item Penalties are
+$
+P_{11}=-6,
+P_{13}=-7,
+P_{14}=-5,
+P_{24}=-5,
+P_{31}=-8,
+P_{32}=1
+$
+
+\item 
+$P_{32}$ is positive. So select $C_{32}$ and form a closed loop.
+\item 
+Select the least allocated value from the (-) signed cells in loop. i.e. $x_{22}$=50.
+
+\item 
+Make the cell corresponding to $x_{22}$ unallocated by adding $x_{22}$ to (+) signed cells in loop. i.e. $x_{22}$=0,$x_{23}$=150,$x_{32}$=50 and all other values remain same. Then u and v values for the modified allocated cells are in Table.\ref{table11}
+
+\begin{table}[!h]
+\begin{center}
+\begin{tabular}{| l | l | l | l | l | }
+                 \hline
+                   & $v_1$=-2 & $v_2$=1 & $v_3$=1 & $v_4$=0  \\
+\hline
+$u_1$=0 & 3 & 1 & 7 & 4  \\ \hline
+$u_2$=4 & 2 & 6 & 5 & 9   \\ \hline
+$u_3$=2 & 8 & 3 & 3 & 2  \\ \hline
+
+\end{tabular}
+\end{center}
+\caption{11}
+\label{table11}
+\end{table}
+
+\item Penalties are
+$
+P_{11}=-5,
+P_{13}=-6,
+P_{14}=-4,
+P_{22}=-1,
+P_{24}=-5,
+P_{31}=-8
+$
+
+\item Then the optimal solution by using eq.\eqref{eq:total} is = 2450.
+\end{enumerate}
+\begin{problem}
+A transportation problem for which the costs, origin and availabilities, destination and requirements are given as follows:\\
+\bigskip
+
+\begin{center}
+\begin{tabular}{c|c c c|c}
+ & $D_1$ & $D_2$ & $D_3$\\ \hline
+$Q_1$ & 2 & 1 & 2 & 40\\
+$Q_2$ & 9 & 4 & 7 & 60\\
+$Q_3$ & 1 & 2 & 9 & 10\\ \hline
+ & 40 & 50 & 20\\
+\end{tabular}
+\end{center}
+\bigskip
+Check whether the following basic feasible solution
+\begin{align*}
+x_{11}&=20,x_{13}=20,x_{21}=10,x_{22}=50
+\\
+x_{33}&=10 \text{ and } x_{12}=x_{23}=x_{32}=x_{33}=0
+\end{align*}
+is optimal. If not, find an optimal solution using MODI method.
+\end{problem}
+
+\begin{problem}
+The following table shows the information on the availability of supply to each warehouse, the requirement of each market and unit of transportation cost (in rupees) from each warehouse to each market.
+%\medskip
+\begin{table}[!h]
+\centering
+\begin{tabular}{c c c c c c c}
+& & Market & & & & \\
+& & $M_1$ & $M_2$ & $M_3$ & $M_4$ & Supply \\
+& $W_1$ & 6 & 3 & 5 & 4 & 22 \\
+Warehouse & $W_2$ & 5 & 9 & 2 & 7 & 15 \\
+& $W_3$ & 5 & 7 & 8 & 6 & 8 \\
+Requirement & & 7 & 12 & 17 & 9 & 
+\end{tabular}
+\end{table}
+\medskip
+The present transportation schedule is as follows: \\
+$W_1$ to $M_2$: 12 units; $W_1$ to $M_3$: 1 unit; $W_1$ to $M_4$: 9 units; $W_2$ to $M_3$: 15 units; $W_3$ to $M_1$: 7 units and $W_3$ to $M_3$: 1 unit. Then the minimum total transportation cost (in rupees) using MODI method is 
+%\begin{enumerate}[(A)]
+%\begin{multicols}{4}
+%\setlength\itemsep{1em}
+%\item 150
+%\item 149
+%\item 148
+%\item 147
+%\end{multicols}
+%\end{enumerate}
+\end{problem}
+\section{Conversion to LPP}
+\begin{problem} 
+Find the optimal solution for the given transportation problem
+\begin{table}[!h]
+\begin{center}
+\begin{tabular}{l  l | l l l l | l  }
+                 
+                 & S/D & 1 & 2 & 3 & 4 &  SUPPLY  \\
+\hline
+& 1 & 3 & 1 & 7 & 4 & 250 \\ 
+& 2 & 2 & 6 & 5 & 9 & 350  \\ 
+& 3 & 8 & 3 & 3 & 2 & 400 \\ 
+\hline
+&DEMAND& 200&300&350&150\\ 
+\end{tabular}
+\end{center}
+\caption{12}
+\end{table}
+\end{problem}
+\solution
+\begin{enumerate}[1.]
+\item 
+Make the objective function for given costs
+\\
+
+$
+f=3x_{11}+1x_{12}+7x_{13}+4x_{14}+
+2x_{21}+6x_{22}+5x_{23}+9x_{24}+
+8x_{31}+3x_{32}+3x_{33}+2x_{34} 
+$
+\\
+\item 
+Make the constraints
+\\
+$
+3x_{11}+1x_{12}+7x_{13}+4x_{14} \leq 250$ \\$
+2x_{21}+6x_{22}+5x_{23}+9x_{24} \leq 350$ \\$
+8x_{31}+3x_{32}+3x_{33}+2x_{34} \leq 400$ \\$
+-3x_{11}-2x_{21}-8x_{31} \leq -200  $ \\$
+-1x_{12}-6x_{22}-3x_{32} \leq -300 $ \\$
+-7x_{13}-5x_{23}-3x_{33} \leq -350 $ \\$
+-4x_{14}-9x_{24}-2x_{34} \leq -150 $ \\$
+x_{11},x_{12},x_{13},x_{14},x_{21},x_{22},x_{23},x_{24},
+x_{31},x_{32},x_{33},x_{34} \geq 0
+$
+\item
+Minimization of cost function(f) is done using cvxopt.
+\lstinputlisting{./codes/1.py}
+
+\end{enumerate}
+\begin{problem}
+Solve problem.2.1,2.2 by converting them to LPP.
+\end{problem}
+\end{document}
+

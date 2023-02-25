@@ -1,0 +1,84 @@
+\iffalse
+\documentclass[journal,10pt,twocolumn]{article}
+\usepackage{graphicx, float}
+\usepackage[margin=0.5in]{geometry}
+\usepackage{amsmath, bm}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{mathtools}
+
+\providecommand{\norm}[1]{\left\lVert#1\right\rVert}
+\let\vec\mathbf
+\newcommand{\myvec}[1]{\ensuremath{\begin{pmatrix}#1\end{pmatrix}}}
+\newcommand{\mydet}[1]{\ensuremath{\begin{vmatrix}#1\end{vmatrix}}}
+
+\title{\textbf{Optimization Assignment}}
+\author{Maddu Dinesh}
+\date{September 2022}
+
+\begin{document}
+
+\maketitle
+\paragraph{\textit{Problem Statement} -
+\fi
+At what points in the interval (0,2$\pi$) does the function $\sin2x$ attain its maximum value.
+\\
+\solution
+	\begin{figure}[!ht]
+		\centering
+		\includegraphics[width=\columnwidth]{12/6/5/8/figs/a.png}
+		\caption{}
+		\label{fig:12/6/5/8}
+  	\end{figure}
+\iffalse
+\section*{\large Figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\columnwidth]{a.png}
+\caption{Graph of f(x)}
+\label{fig:triangle}
+\end{figure}
+\section*{\large Solution}
+
+	
+    \subsection*{\normalsize Gradient descent}
+\fi    
+  Since  
+    \begin{align}
+	\label{eq:12/6/5/8vol_varx}
+	    f(x) &= \sin2x,
+	    \\
+	    f'(x) &= 2\cos2x
+	\end{align}
+\iffalse
+we have to attain the maximum value of sin2x in the interval [0,2$\pi$]. This can be seen in Figure f(x).
+\fi
+Using gradient ascent, 
+\begin{align}
+	x_{n+1} &= x_n + \alpha \nabla f(x_n) \\
+&=x_n+\alpha(2\cos2x)
+\end{align}
+Choosing
+\begin{align}
+	x_0&=0.5,\alpha=0.001, precision = 0.00000001, 
+	\\
+	f_{max} &= 1.0000,
+ 	x_{max}= 0.7854.
+    \end{align}
+   
+    
+
+    
+
+
+
+
+
+ 
+
+
+
+
+
+

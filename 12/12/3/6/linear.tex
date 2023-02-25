@@ -1,0 +1,141 @@
+\iffalse
+\documentclass[journal,10pt,twocolumn]{article}
+\usepackage{graphicx}
+\usepackage[margin=0.5in]{geometry}
+\usepackage{amsmath}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{listings}
+\providecommand{\norm}[1]{\left\lVert#1\right\rVert}
+\providecommand{\abs}[1]{\left\vert#1\right\vert}
+\usepackage{enumerate}
+\let\vec\mathbf
+\newcommand{\myvec}[1]{\ensuremath{\myvec{#1}}}
+\newcommand{\mydet}[1]{\ensuremath{\begin{vmatrix}#1\end{vmatrix}}}
+\providecommand{\brak}[1]{\ensuremath{\left(#1\right)}}
+\lstset{
+frame=single,
+breaklines=true,
+columns=fullflexible
+}
+\title{\textbf{Matrix Assignment}}
+\author{Mannava Venkatasai}
+\date{September 2022}
+\begin{document}
+\maketitle
+\raggedright \textbf{Problem Statement}: \vspace{3mm} \\
+Two godowns A and B have grain capacity of 100 quintals and 50 quintals
+respectively. They supply to 3 ration shops, D, E and F whose requirements are
+60, 50 and 40 quintals respectively. The cost of transportation per quintal from
+the godowns to the shops are given in the following table
+\begin{table}[!ht]
+	\centering
+\begin{tabular}{|c|c|c|}
+\hline
+% \begin{tabularx}{\linewidth} {lX}
+ From/to & A& B  \\ 
+ \hline
+ D & 6 & 4 \\  
+ \hline
+ E & 3  & 2 \\
+ \hline
+  F & 2.5 & 3 \\
+ \hline
+\end{tabular} 
+\end{table} 
+\vspace{5mm}
+How should the supplies be transported in order that the transportation cost is minimum? What is the minimum cost?
+\fi
+%\\
+%\solution
+Let's assume that 
+\begin{enumerate}
+\item A supplies $x$ quintals grain to ration shop D.
+\item A supplies $y$ quintals grain to ration shop E.
+\item A will supply remaining grains 100-$x$-$y$ quintals to F.
+\item B will supply 60-$x$ quintals grain to ration shop D. 
+\item B will supply 50-$y$ quintals grain to ration shop E.
+\item B will supply $x$+$y$-60 quintals grain to ration shop F.
+\end{enumerate}
+Total transportation cost is given by :
+\begin{align}
+P=2.5x+1.5y+410
+\end{align}
+Now, Since godown A can supply maximum 60 quintals to ration shop D and 50 quintals to ration shop E and have maximum 100 quintals capacity to supply.\vspace{2mm} \\ Also, if godown A supplies all 40 quintals to ration shop F, then remaining 60 quintals will be supplied to ration shop D and E and $x$ and $y$ is amount of grains. It can never be negative.  This leads to the following conditions
+\begin{align}
+x+y \le 100 \\
+x \le 60 \\
+y \le 50 \\
+-x-y \le -60 \\
+x \ge 0 \\
+y \ge 0
+\end{align}
+\iffalse
+The above equations in vector form is :
+\begin{align}
+\vec{A_1} = 
+\myvec{
+1 \\
+1 \\
+} \\
+\vec{A_2} = 
+\myvec{
+1 \\
+1 \\
+} \\
+\vec{A_3} = 
+\myvec{
+1 \\
+0 \\
+} \\
+\vec{A_4} = 
+\myvec{
+0 \\
+1 \\
+} \\
+\vec{x} = 
+\myvec{
+x \\
+y \\
+}
+\end{align}
+\begin{align}
+\vec{A_1}\vec{x} \le 100
+\end{align}
+\begin{align}
+\vec{A_2}\vec{x} \ge 60
+\end{align}
+\begin{align}
+\vec{A_3}\vec{x} \le 60
+\end{align}
+\begin{align}
+\vec{A_4}\vec{x} \le 50
+\end{align}
+which can be expressed in vector form as
+\fi
+The optimization problem can then be expressed as
+\begin{align}
+	P=\max_{\vec{x}}\myvec{2.5 & 1.5}\vec{x}+410
+	\\
+	s.t. \quad
+ \myvec{1 &1 \\ -1 & -1 \\ -1 & 0 \\ 0 & -1 \\} \vec{x}\preceq \myvec{100 \\ -60 \\ -60 \\ -50}
+\end{align}
+yielding
+\begin{align}
+	P = 510, 
+\vec{x} = 
+\myvec{
+10 \\
+50 \\
+}
+\end{align}
+Hence,
+\begin{enumerate}
+\item The minimum transportation cost is : 510 /-
+\item A supplies 10 quintals grain to ration shop D.
+\item A supplies 50 quintals grain to ration shop E.
+\item A supplies 40 quintals grain to ration shop F.
+\item A supplies 50 quintals grain to ration shop D.
+\item A supplies 0 quintals grain to ration shop E.
+\item A supplies 0 quintals grain to ration shop F.
+\end{enumerate}

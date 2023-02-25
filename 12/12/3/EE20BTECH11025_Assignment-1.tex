@@ -1,0 +1,209 @@
+\documentclass[journal,12pt,twocolumn]{IEEEtran}
+\usepackage{romannum}
+\usepackage{float}
+\usepackage{setspace}
+\usepackage{gensymb}
+\singlespacing
+\usepackage[cmex10]{amsmath}
+\usepackage{amsthm}
+\usepackage{mathrsfs}
+\usepackage{txfonts}
+\usepackage{stfloats}
+\usepackage{bm}
+\usepackage{cite}
+\usepackage{cases}
+\usepackage{subfig}
+\usepackage{longtable}
+\usepackage{multirow}
+\usepackage{enumitem}
+\usepackage{mathtools}
+\usepackage{steinmetz}
+\usepackage{tikz}
+\usepackage{circuitikz}
+\usepackage{verbatim}
+\usepackage{tfrupee}
+\usepackage[breaklinks=true]{hyperref}
+\usepackage{tkz-euclide}
+\usetikzlibrary{calc,math}
+\usepackage{listings}
+    \usepackage{color}                                            %%
+    \usepackage{array}                                            %%
+    \usepackage{longtable}                                        %%
+    \usepackage{calc}                                             %%
+    \usepackage{multirow}                                         %%
+    \usepackage{hhline}                                           %%
+    \usepackage{ifthen}                                           %%
+  %optionally (for landscape tables embedded in another document): %%
+    \usepackage{lscape}     
+\usepackage{multicol}
+\usepackage{chngcntr}
+\DeclareMathOperator*{\Res}{Res}
+\renewcommand\thesection{\arabic{section}}
+\renewcommand\thesubsection{\thesection.\arabic{subsection}}
+\renewcommand\thesubsubsection{\thesubsection.\arabic{subsubsection}}
+
+\renewcommand\thesectiondis{\arabic{section}}
+\renewcommand\thesubsectiondis{\thesectiondis.\arabic{subsection}}
+\renewcommand\thesubsubsectiondis{\thesubsectiondis.\arabic{subsubsection}}
+
+% correct bad hyphenation here
+\hyphenation{op-tical net-works semi-conduc-tor}
+\def\inputGnumericTable{}                                 %%
+
+\lstset{
+frame=single, 
+breaklines=true,
+columns=fullflexible
+}
+
+\begin{document}
+
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{problem}{Problem}
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{example}{Example}[section]
+\newtheorem{definition}[problem]{Definition}
+\newcommand{\BEQA}{\begin{eqnarray}}
+\newcommand{\EEQA}{\end{eqnarray}}
+\newcommand{\define}{\stackrel{\triangle}{=}}
+
+\bibliographystyle{IEEEtran}
+\providecommand{\mbf}{\mathbf}
+\providecommand{\pr}[1]{\ensuremath{\Pr\left(#1\right)}}
+\providecommand{\qfunc}[1]{\ensuremath{Q\left(#1\right)}}
+\providecommand{\sbrak}[1]{\ensuremath{{}\left[#1\right]}}
+\providecommand{\lsbrak}[1]{\ensuremath{{}\left[#1\right.}}
+\providecommand{\rsbrak}[1]{\ensuremath{{}\left.#1\right]}}
+\providecommand{\brak}[1]{\ensuremath{\left(#1\right)}}
+\providecommand{\lbrak}[1]{\ensuremath{\left(#1\right.}}
+\providecommand{\rbrak}[1]{\ensuremath{\left.#1\right)}}
+\providecommand{\cbrak}[1]{\ensuremath{\left\{#1\right\}}}
+\providecommand{\lcbrak}[1]{\ensuremath{\left\{#1\right.}}
+\providecommand{\rcbrak}[1]{\ensuremath{\left.#1\right\}}}
+\theoremstyle{remark}
+\newtheorem{rem}{Remark}
+\newcommand{\sgn}{\mathop{\mathrm{sgn}}}
+\providecommand{\abs}[1]{\left\vert#1\right\vert}
+\providecommand{\res}[1]{\Res\displaylimits_{#1}} 
+\providecommand{\norm}[1]{\left\lVert#1\right\rVert}
+\providecommand{\mtx}[1]{\mathbf{#1}}
+\providecommand{\mean}[1]{E\left[ #1 \right]}
+\providecommand{\fourier}{\overset{\mathcal{F}}{ \rightleftharpoons}}
+\providecommand{\system}{\overset{\mathcal{H}}{ \longleftrightarrow}}
+\newcommand{\solution}{\noindent \textbf{Solution: }}
+\newcommand{\cosec}{\,\text{cosec}\,}
+\providecommand{\dec}[2]{\ensuremath{\overset{#1}{\underset{#2}{\gtrless}}}}
+\newcommand{\myvec}[1]{\ensuremath{\begin{pmatrix}#1\end{pmatrix}}}
+\newcommand{\mydet}[1]{\ensuremath{\begin{vmatrix}#1\end{vmatrix}}}
+\numberwithin{equation}{subsection}
+\makeatletter
+\@addtoreset{figure}{problem}
+\makeatother
+
+\let\StandardTheFigure\thefigure
+\let\vec\mathbf
+\renewcommand{\thefigure}{\theproblem}
+
+
+
+\def\putbox#1#2#3{\makebox[0in][l]{\makebox[#1][l]{}\raisebox{\baselineskip}[0in][0in]{\raisebox{#2}[0in][0in]{#3}}}}
+     \def\rightbox#1{\makebox[0in][r]{#1}}
+     \def\centbox#1{\makebox[0in]{#1}}
+     \def\topbox#1{\raisebox{-\baselineskip}[0in][0in]{#1}}
+     \def\midbox#1{\raisebox{-0.5\baselineskip}[0in][0in]{#1}}
+
+\vspace{3cm}
+
+
+\title{Assignment 1}
+\author{Jaswanth Chowdary Madala}
+
+
+
+
+
+% make the title area
+\maketitle
+
+\newpage
+
+%\tableofcontents
+
+\bigskip
+
+\renewcommand{\thefigure}{\theenumi}
+\renewcommand{\thetable}{\theenumi}
+
+
+
+\begin{enumerate}
+\item A dietician has to develop a special diet using two foods $P$ and $Q$. Each packet (containing 30 g) of food $P$ contains 12 units of calcium, 4 units of iron, 6 units of cholesterol and 6 units of vitamin A. Each packet of the same quantity of food $Q$ contains 3 units of calcium, 20 units of iron, 4 units of cholesterol and 3 units of vitamin A. The diet requires atleast 240 units of calcium, atleast 460 units of iron and at most 300 units of cholesterol. How many packets of each food should be used to maximise the amount of vitamin A in the diet? What is the maximum amount of vitamin A in the diet?
+
+\item A farmer mixes two brands $P$ and $Q$ of cattle feed. Brand $P$, costing Rs 250 per bag, contains 3 units of nutritional element A, 2.5 units of element B and 2 units of element C. Brand $Q$ costing Rs 200 per bag contains 1.5 units of nutritional element A, 11.25 units of element B, and 3 units of element C. The minimum requirements of nutrients A, B and C are 18 units, 45 units and 24 units respectively. Determine the number of bags of each brand which should be mixed in order to produce a mixture having a minimum cost per bag? What is the minimum cost of the mixture per bag?
+
+\item A dietician wishes to mix together two kinds of food X and Y in such a way that the mixture contains at least 10 units of vitamin A, 12 units of vitamin B and 8 units of vitamin C. The vitamin contents of one kg food is given below:
+
+\begin{table}[h]
+\centering
+\input{tables/table1.tex}
+\caption{}
+\end{table}
+
+One kg of food X costs Rs 16 and one kg of food Y costs Rs 20. Find the least cost of the mixture which will produce the required diet?
+
+\item A manufacturer makes two types of toys A and B. Three machines are needed
+for this purpose and the time (in minutes) required for each toy on the machines is given below:
+
+\begin{table}[h]
+\centering
+\input{tables/table2.tex}
+\caption{}
+\end{table}
+
+Each machine is available for a maximum of 6 hours per day. If the profit on each toy of type A is Rs 7.50 and that on each toy of type B is Rs 5, show that 15 toys of type A and 30 of type B should be manufactured in a day to get maximum profit.
+
+\item An aeroplane can carry a maximum of 200 passengers. A profit of Rs 1000 is made on each executive class ticket and a profit of Rs 600 is made on each
+economy class ticket. The airline reserves at least 20 seats for executive class. However, at least 4 times as many passengers prefer to travel by economy class than by the executive class. Determine how many tickets of each type must be sold in order to maximise the profit for the airline. What is the maximum profit?
+
+\item Two godowns A and B have grain capacity of 100 quintals and 50 quintals respectively. They supply to 3 ration shops, D, E and F whose requirements are 60, 50 and 40 quintals respectively. The cost of transportation per quintal from the godowns to the shops are given in the following table:
+
+\begin{table}[h]
+\centering
+\input{tables/table3.tex}
+\caption{}
+\end{table}
+
+How should the supplies be transported in order that the transportation cost is minimum? What is the minimum cost?
+
+\item An oil company has two depots A and B with capacities of 7000 L and 4000 L respectively. The company is to supply oil to three petrol pumps, D, E and F whose requirements are 4500L, 3000L and 3500L respectively. The distances (in km) between the depots and the petrol pumps is given in the following table:
+
+\begin{table}[h]
+\centering
+\input{tables/table4.tex}
+\caption{}
+\end{table}
+
+Assuming that the transportation cost of 10 litres of oil is Re 1 per km, how should the delivery be scheduled in order that the transportation cost is minimum? What is the minimum cost?
+
+\item A fruit grower can use two types of fertilizer in his garden, brand P and brand Q. The amounts (in kg) of nitrogen, phosphoric acid, potash, and chlorine in a bag of each brand are given in the table. Tests indicate that the garden needs at least 240 kg of phosphoric acid, at least 270 kg of potash and at most 310 kg of chlorine
+
+If the grower wants to minimise the amount of nitrogen added to the garden, how many bags of each brand should be used? What is the minimum amount of nitrogen added in the garden?
+
+\begin{table}[h]
+\centering
+\input{tables/table5.tex}
+\caption{}
+\label{tab:8}
+\end{table}
+
+\item Refer to Question \ref{tab:8} If the grower wants to maximise the amount of nitrogen added to the garden, how many bags of each brand should be added? What is the maximum amount of nitrogen added?
+
+\item A toy company manufactures two types of dolls, A and B. Market research and available resources have indicated that the combined production level should not exceed 1200 dolls per week and the demand for dolls of type B is at most half of that for dolls of type A. Further, the production level of dolls of type A can exceed three times the production of dolls of other type by at most 600 units. If the company makes profit of Rs 12 and Rs 16 per doll respectively on dolls A and B, how many of each should be produced weekly in order to maximise the profit?
+
+\end{enumerate}
+\end{document}
+
+

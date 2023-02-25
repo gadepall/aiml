@@ -1,0 +1,30 @@
+\begin{longtable}
+%\hhline{|-|-|}
+	 \multicolumn{1}{|p{\gnumericColA}|}%
+	{\gnumericPB{\centering}\textbf{Corner Point}}
+	&\multicolumn{1}{p{\gnumericColB}|}%
+	{\gnumericPB{\centering}\textbf{Corresponding Z value}}
+\\
+%\hhline{|----|}
+	 \multicolumn{1}{|p{\gnumericColA}|}%
+	{\gnumericPB{\centering}$\vec{A}\myvec{0,1}$}
+	&\multicolumn{1}{p{\gnumericColB}|}%
+	{\gnumericPB{\centering}4}
+\\
+%\hhline{|----|}
+	 \multicolumn{1}{|p{\gnumericColA}|}%
+	{\gnumericPB{\centering}$\vec{B}\myvec{0,0}$}
+	&\multicolumn{1}{p{\gnumericColB}|}%
+	{\gnumericPB{\centering}0}
+\\
+%\hhline{|----|}
+	 \multicolumn{1}{|p{\gnumericColA}|}%
+	{\gnumericPB{\centering}$\vec{x}\myvec{4,0}$}
+	&\multicolumn{1}{p{\gnumericColB}|}%
+	{\gnumericPB{\centering}12}
+\\
+%\hhline{|-|-|-|-|}
+\end{longtable}
+
+%\ifthenelse{\isundefined{\languageshorthands}}{}{\languageshorthands{\languagename}}
+\gnumericTableEnd

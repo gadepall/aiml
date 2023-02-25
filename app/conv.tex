@@ -1,0 +1,158 @@
+\begin{enumerate}[label=\thechapter.\arabic*,ref=\thechapter.\theenumi]
+\numberwithin{equation}{enumi}
+\numberwithin{figure}{enumi}
+\numberwithin{table}{enumi}
+\item
+	\label{prop:app/convconvconvex_def}
+A single variable function $f$ is said to be convex if
+\begin{align}
+	\label{eq:app/convconvconvex_def}
+	f\sbrak{\lambda x_1 + \brak{1-\lambda}x_2} \leq \lambda f\brak{x_1} + \brak{1-\lambda}f\brak{x_2},
+\end{align}
+for $\quad 0 < \lambda < 1$ and $x_1, x_2 \in \mathbb{R}$.
+
+For a generic quadratic function $ax^2+bc+c$, let us determine the sufficient condition for it to be convex. Let 
+\begin{align}
+	\label{eq:app/convconvEq1}
+	f\brak{x} &= ax^2+bx+c 
+\end{align}
+Substituting LHS of inequality from \eqref{eq:app/convconvconvex_def} in \eqref{eq:app/convconvEq1}
+\begin{multline}
+   \label{eq:app/convconvEq2}
+	f\sbrak{\lambda x_1 + \brak{1-\lambda}x_2}  = f\sbrak{x_2 + \lambda \brak{x_1-x_2}}\\ 
+	   \implies  a\sbrak{x_2+\lambda\brak{x_1-x_2}}^2 b\sbrak{x_2+\lambda\brak{x_1-x_2}} + c \\ 
+	   \implies ax_2^2 + a\lambda^2 x_1^2+a\lambda^2 x_2^2 - 2a\lambda^2 x_1x_2 \\ 
+	   +2a\lambda x_1x_2 - 2a\lambda x_2^2+bx_2+b\lambda x_1-b\lambda x_2+c 
+\end{multline} 
+Substituting RHS of inequality from \eqref{eq:app/convconvconvex_def} in \eqref{eq:app/convconvEq1}
+\begin{multline}
+	\lambda f\brak{x_1} + \brak{1-\lambda}f\brak{x_2}  = a \lambda x_1^2 + b\lambda x_1 + \lambda c \\ 
+		 + \brak{1-\lambda}\brak{ax_2^2+bx_2+c} \\
+	\label{eq:app/convconvEq3}
+		\implies  a \lambda x_1^2 + b\lambda x_1 + ax_2^2 + bx_2 + c -a\lambda x_2^2 -b\lambda x_2
+\end{multline} 
+Combining \eqref{eq:app/convconvEq2} and \eqref{eq:app/convconvEq3} with inequality and simplifying
+\begin{multline}
+a\lambda^2 x_1^2 + a\lambda^2 x_2^2 - 2a\lambda^2 x_1x_2 +2a\lambda x_1x_2 - 2a\lambda x_2^2 \leq \\
+	a\lambda x_1^2  -a\lambda x_2^2  
+\end{multline} 
+\begin{multline}
+	\label{eq:app/convconvEq4}
+	\implies a\lambda^2 x_1^2 + a\lambda^2 x_2^2 - 2a\lambda^2 x_1x_2 +2a\lambda x_1x_2 - a\lambda x_2^2 - a\lambda x_1^2 \leq 0 \\ 
+	\implies   x_1^2\brak{a\lambda^2-a\lambda} + x_2^2\brak{a\lambda^2 - a\lambda} - 2x_1x_2\brak{a\lambda^2-a\lambda} \leq 0 \\ 
+	 \implies  \brak{a \lambda^2-a\lambda}\brak{x_1-x_2}^2 \leq 0\\
+	 \implies  a\lambda\brak{1-\lambda}\brak{x_1-x_2}^2 \geq 0
+\end{multline}
+For the inequality in \eqref{eq:app/convconvEq4} to be true,
+\begin{align}
+	a \geq 0 \because \lambda, 1-\lambda \geq 0, \brak{x_1-x_2}^2 \geq 0
+\end{align}
+However, $a \neq 0$, since it is a quadratic function. Hence $a > 0$, for $f\brak{x}$ to be convex.
+\item The quadratic form
+        \begin{align}
+            q\brak{\vec{x}} \triangleq \vec{x}^\top\vec{Ax} + \vec{b}^\top\vec{x} + c
+            \label{eq:quad-x}
+        \end{align}
+        is convex iff $\vec{A}$ is positive semi-definite.
+	\\
+	\solution
+	Consider two points $\vec{x_1}$ and $\vec{x_2}$, and a real constant
+        $0 \le \mu \le 1$. Then,
+        \begin{align}
+            &\mu f\brak{\vec{x_1}} + \brak{1-\mu}f\brak{\vec{x_2}} - f\brak{\mu\vec{x_1}+\brak{1-\mu}\vec{x_2}} \nonumber \\
+            &= \brak{\mu-\mu^2}\vec{x_1}^\top\vec{Ax_1} + \brak{1-\mu-\brak{1-\mu}^2}\vec{x_2}^\top\vec{Ax_2} \nonumber \\
+            &- 2\mu\brak{1-\mu}\vec{x_1}^\top\vec{Ax_2} \\
+            &= \mu\brak{1-\mu}\brak{\vec{x_1}^\top\vec{Ax_1}-2\vec{x_1}^\top\vec{Ax_2}+\vec{x_2}^\top\vec{Ax_2}} \\
+            &= \mu\brak{1-\mu}\brak{\vec{x_1}-\vec{x_2}}^\top\vec{A}\brak{\vec{x_1}-\vec{x_2}}
+            \label{eq:psd-iff}
+        \end{align}
+        Since $\vec{x_1}$ and $\vec{x_2}$ are arbitrary, it follows from 
+        \eqref{eq:psd-iff} that
+        \begin{align}
+            \mu f\brak{\vec{x_1}} + \brak{1-\mu}f\brak{\vec{x_2}} \ge f\brak{\mu\vec{x_1}+\brak{1-\mu}\vec{x_2}}
+        \end{align}
+        iff $\vec{A}$ is positive semi-definite, as required.
+
+\item     Let
+	\begin{align}
+        \vec{M} &\triangleq \myvec{\vec{m_1} & \vec{m_2}} \label{eq:app-M-def} \\
+        \bm{\lambda} &\triangleq \myvec{\lambda_1\\-\lambda_2} \label{eq:app-lambda-def} \\
+    \end{align}
+	The function 
+	\begin{align}
+        f\brak{\bm{\lambda}} \triangleq 
+                               \norm{\vec{M}\bm{\lambda}-\vec{x}}^2 
+        \label{eq:app-f-def}
+    \end{align}
+    is convex.
+    \\
+    \solution
+        \eqref{eq:app-f-def} can be expressed as
+\begin{align}
+	\brak{\vec{M}\bm{\lambda}-\vec{x}}^\top\brak{\vec{M}\bm{\lambda}-\vec{x}}
+\end{align}
+Consider $\bm{\lambda}_1$ and 
+    $\bm{\lambda}_2$ and let $0 \le \mu \le 1$. Then,
+    \begin{align}
+        f\brak{\mu\bm{\lambda}_1+\brak{1-\mu}\bm{\lambda}_2} 
+        &= \norm{\vec{M}\brak{\mu\bm{\lambda}_1+\brak{1-\mu}\bm{\lambda}_2}-\vec{x}} \\
+        &= \norm{\mu\brak{\vec{M}\bm{\lambda}_1-\vec{x}}+\brak{1-\mu}\brak{\vec{M}\bm{\lambda}_2-\vec{x}}} \\
+        &\le \mu\norm{\vec{M\lambda_1}-\vec{x}} + \brak{1-\mu}\norm{\vec{M\lambda_2}-\vec{x}}
+        \label{eq:app-convex-ineq}
+    \end{align}
+    Where \eqref{eq:app-convex-ineq} follows from the triangle inequality.
+    \item Show that the {\em quadratic programming problem} 
+ \begin{align}
+        \min_{\vec{x}} g\brak{\vec{x}} &= \norm{\vec{x}-\vec{P}}^2 \\
+        \textrm{s.t. } h\brak{\vec{x}} &= \vec{x}^\top\vec{Vx} + 2\vec{u}^\top\vec{x} + f = 0 \label{eq:12/6/5/27/conv/conv/nonconv-constr/app}
+    \end{align}
+    with $\vec{V}\succeq \vec{0}$ 
+    is nonconvex.
+    \\
+    \solution  Suppose $\vec{x_1}$ and $\vec{x_2}$ satisfy $h\brak{\vec{x}} = 0$. Then,
+    \begin{align}
+        \vec{x_1}^\top\vec{Vx_1} + 2\vec{u}^\top\vec{x_1} + f &= 0 \label{eq:12/6/5/27/conv/conv/x1-parab} \\
+        \vec{x_2}^\top\vec{Vx_2} + 2\vec{u}^\top\vec{x_2} + f &= 0 \label{eq:12/6/5/27/conv/conv/x2-parab}
+    \end{align}
+    Then, for any $0 \le \lambda \le 1$, substituting
+    \begin{align}
+        \vec{x} =\lambda\vec{x_1} + \brak{1-\lambda}\vec{x_2}
+    \end{align}
+    into \eqref{eq:12/6/5/27/conv/conv/constr}, we get
+    \begin{align}
+        h\brak{\vec{x}} = \lambda\brak{\lambda-1}\brak{\vec{x_1}-\vec{x_2}}^\top\vec{V}\brak{\vec{x_1}-\vec{x_2}} \neq 0
+        \label{eq:12/6/5/27/conv/conv/nonconvex}
+    \end{align}
+    as $\vec{x_1} - \vec{x_2}$ can be arbitrary. Hence, the optimization 
+    problem is nonconvex as the set of points on the parabola do not form a 
+    convex set.
+    \item If $\vec{P}$ lies \textit{outside} the given curve, show that the following
+    relaxation makes the above problem convex.
+    \begin{align}
+        \min_{\vec{x}} g\brak{\vec{x}} &= \norm{\vec{x}-\vec{P}}^2 \label{eq:12/6/5/27/conv/conv/cost} \\
+        \textrm{s.t. } h\brak{\vec{x}} &= \vec{x}^\top\vec{Vx} + 2\vec{u}^\top\vec{x} + f \le 0 \label{eq:12/6/5/27/conv/conv/constr}
+    \end{align}
+    \solution 
+ Suppose 
+    $\vec{x_1}$ and $\vec{x_2}$ satisfy $h\brak{\vec{x}} \le 0$. Then, 
+    \begin{align}
+        \vec{x_1}^\top\vec{Vx_1} + 2\vec{u}^\top\vec{x_1} + f &\le 0 \\
+        \vec{x_2}^\top\vec{Vx_2} + 2\vec{u}^\top\vec{x_2} + f &\le 0 
+    \end{align}
+    Then, for any $0 \le \lambda \le 1$, substituting
+    \begin{align}
+	    \vec{x} = \lambda\vec{x_1} + \brak{1-\lambda}\vec{x_2}
+    \end{align}
+    into \eqref{eq:12/6/5/27/conv/conv/constr}, and noting that $\vec{V}$ is positive semi-definite, 
+    we get
+    \begin{align}
+        h\brak{\vec{x}} &\le \lambda h\brak{\vec{x_1}} + \brak{1-\lambda}h\brak{\vec{x_2}} \nonumber \\
+                                &+ 2\lambda\brak{1-\lambda}\brak{\vec{x_1}-\vec{x_2}}^\top\vec{V}\brak{\vec{x_1}-\vec{x_2}} \\
+                                &\le 2\lambda\brak{1-\lambda}\brak{\vec{x_1}-\vec{x_2}}^\top\vec{V}\brak{\vec{x_1}-\vec{x_2}} \\
+                                &\le 0
+        \label{eq:12/6/5/27/conv/conv/convex}
+    \end{align}
+    Hence, the optimization problem is convex. 
+
+\end{enumerate}
+

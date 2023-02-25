@@ -1,0 +1,100 @@
+\iffalse
+<<<<<<< HEAD
+hi
+=======
+\documentclass[a4paper,12pt,twocolumn]{article}
+\usepackage{graphicx}
+\usepackage[margin=0.5in]{geometry}
+\usepackage[cmex10]{amsmath}
+\usepackage{array}
+\usepackage{gensymb}
+\usepackage{booktabs}
+\title{Optimization Assignment}
+
+\author{Ravi Sumanth Muppana- FWC22003}
+\date{September 2022}
+\providecommand{\norm}[1]{\left\lVert#1\right\rVert}
+\providecommand{\abs}[1]{\left\vert#1\right\vert}
+\let\vec\mathbf
+\newcommand{\myvec}[1]{\ensuremath{\begin{pmatrix}#1\end{pmatrix}}}
+\newcommand{\mydet}[1]{\ensuremath{\begin{vmatrix}#1\end{vmatrix}}}
+\providecommand{\brak}[1]{\ensuremath{\left((#1\right)}}
+\begin{document}
+\maketitle
+\section{Problem:}
+\fi
+Maximize $Z$ = $5x+3y$ such that 
+\begin{align}
+	3x+5y&\le15,
+	\\
+	5x+2y&\le10,
+	\\
+	x\ge0,y&\ge0.
+\end{align}
+\solution
+\iffalse
+	\begin{figure}[!ht]
+		\centering
+		\includegraphics[width=\columnwidth]{12/12/1/3/figs/optim.png}
+		\caption{}
+		\label{fig:12/12/1/3}
+  	\end{figure}
+\maketitle
+\section{Solution:}
+\begin{figure}[h]
+\includegraphics[width=\linewidth]{optim.png}
+        \caption{feasible region}
+\end{figure}
+The feasible region is shown in Fig.
+		\ref{fig:12/12/1/3}.
+\subsection{Theory:}
+We need to first graph the feasible region of the system of inequalities.  The region is bounded. We need to find the coordinates of corner points and figure the minimum value of $Z$. The given set of equations are:
+\begin{align}
+	&3x+5y\le15\\
+	&5x+2y\le10\\
+	&x\ge0\\
+	&y\ge0\\
+\end{align}
+In vector form, they are written as:
+\fi
+The given problem can be expressed as
+\begin{align}
+	Z =\myvec{5 & 3}\vec{x}
+	\\
+s.t. \quad	\myvec{3 & 5\\5&2}\vec{x}\le\myvec{15\\10}\\
+	\myvec{1&0\\0&1}\vec{x}\ge\myvec{0\\0}\\
+\end{align}
+Using cvxpy, the 
+solution is 
+\iffalse
+\subsection{Mathematical Calculation:}
+We need to find the intersection of given system of inequalities, to figure out the coordinates of feasible region.
+The coordinates of the quadrilateral are $\myvec{0\\3}$, $\myvec{0\\2}$, $\myvec{0\\0}$, $\myvec{\frac{20}{19} \\ \frac{45}{19}}$.
+Solving using cvxpy, we get,
+\fi
+\begin{align}
+	\vec{x} = \myvec{\frac{20}{19}\\\frac{45}{19}},
+	Z_{max} = \frac{235}{19}
+\end{align}
+\iffalse
+Hence, the maximum of Z is verified using optimization.
+ 
+\section{Construction:}
+The construction of system of equations can be done by plotting them using matplotlib library.
+\begin{table}[h]
+        \centering
+\setlength\extrarowheight{2pt}
+        \begin{tabular}{|c|c|c|}
+                \hline
+		\textbf{variable} & \textbf{equation} & \textbf{comments}\\
+		\hline
+		y1 & (15-3x)/5 & eqn 1\\
+		\hline
+		y2 & (10-5x)/5 & eq 2\\
+		\hline
+	\end{tabular}
+\end{table}
+
+\end{document}
+>>>>>>> f531642 (Created codes and figs folder)
+\fi

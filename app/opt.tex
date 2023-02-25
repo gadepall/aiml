@@ -1,0 +1,59 @@
+\begin{enumerate}[label=\thechapter.\arabic*,ref=\thechapter.\theenumi]
+\numberwithin{equation}{enumi}
+\numberwithin{figure}{enumi}
+\numberwithin{table}{enumi}
+    \item {\em quadratic programming problem} 
+ \begin{align}
+        \min_{\vec{x}} g\brak{\vec{x}} &= \norm{\vec{x}-\vec{P}}^2 \\
+        \textrm{s.t. } h\brak{\vec{x}} &= \vec{x}^\top\vec{Vx} + 2\vec{u}^\top\vec{x} + f = 0 \label{eq:12/6/5/27/conv/conv/nonconv-constr/app}
+    \end{align}
+    with $\vec{V}\succeq \vec{0}$ 
+    is nonconvex.
+    \\
+    \solution  Suppose $\vec{x_1}$ and $\vec{x_2}$ satisfy $h\brak{\vec{x}} = 0$. Then,
+    \begin{align}
+        \vec{x_1}^\top\vec{Vx_1} + 2\vec{u}^\top\vec{x_1} + f &= 0 \label{eq:12/6/5/27/conv/conv/x1-parab} \\
+        \vec{x_2}^\top\vec{Vx_2} + 2\vec{u}^\top\vec{x_2} + f &= 0 \label{eq:12/6/5/27/conv/conv/x2-parab}
+    \end{align}
+    Then, for any $0 \le \lambda \le 1$, substituting
+    \begin{align}
+        \vec{x} =\lambda\vec{x_1} + \brak{1-\lambda}\vec{x_2}
+    \end{align}
+    into \eqref{eq:12/6/5/27/conv/conv/constr}, we get
+    \begin{align}
+        h\brak{\vec{x}} = \lambda\brak{\lambda-1}\brak{\vec{x_1}-\vec{x_2}}^\top\vec{V}\brak{\vec{x_1}-\vec{x_2}} \neq 0
+        \label{eq:12/6/5/27/conv/conv/nonconvex}
+    \end{align}
+    as $\vec{x_1} - \vec{x_2}$ can be arbitrary. Hence, the optimization 
+    problem is nonconvex as the set of points on the parabola do not form a 
+    convex set.
+    \item If $\vec{P}$ lies \textit{outside} the given curve, show that the following
+    relaxation makes the above problem convex.
+    \begin{align}
+        \min_{\vec{x}} g\brak{\vec{x}} &= \norm{\vec{x}-\vec{P}}^2 \label{eq:12/6/5/27/conv/conv/cost} \\
+        \textrm{s.t. } h\brak{\vec{x}} &= \vec{x}^\top\vec{Vx} + 2\vec{u}^\top\vec{x} + f \le 0 \label{eq:12/6/5/27/conv/conv/constr}
+    \end{align}
+    \solution 
+ Suppose 
+    $\vec{x_1}$ and $\vec{x_2}$ satisfy $h\brak{\vec{x}} \le 0$. Then, 
+    \begin{align}
+        \vec{x_1}^\top\vec{Vx_1} + 2\vec{u}^\top\vec{x_1} + f &\le 0 \\
+        \vec{x_2}^\top\vec{Vx_2} + 2\vec{u}^\top\vec{x_2} + f &\le 0 
+    \end{align}
+    Then, for any $0 \le \lambda \le 1$, substituting
+    \begin{align}
+	    \vec{x} = \lambda\vec{x_1} + \brak{1-\lambda}\vec{x_2}
+    \end{align}
+    into \eqref{eq:12/6/5/27/conv/conv/constr}, and noting that $\vec{V}$ is positive semi-definite, 
+    we get
+    \begin{align}
+        h\brak{\vec{x}} &\le \lambda h\brak{\vec{x_1}} + \brak{1-\lambda}h\brak{\vec{x_2}} \nonumber \\
+                                &+ 2\lambda\brak{1-\lambda}\brak{\vec{x_1}-\vec{x_2}}^\top\vec{V}\brak{\vec{x_1}-\vec{x_2}} \\
+                                &\le 2\lambda\brak{1-\lambda}\brak{\vec{x_1}-\vec{x_2}}^\top\vec{V}\brak{\vec{x_1}-\vec{x_2}} \\
+                                &\le 0
+        \label{eq:12/6/5/27/conv/conv/convex}
+    \end{align}
+    Hence, the optimization problem is convex. 
+
+\end{enumerate}
+

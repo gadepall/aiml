@@ -1,0 +1,101 @@
+\iffalse
+\documentclass[12pt]{article}
+\usepackage{graphicx}
+\usepackage[none]{hyphenat}
+\usepackage{listings}
+\usepackage[english]{babel}
+\usepackage{caption} 
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{amssymb} % for \because
+\usepackage{extarrows} % for Row operations arrows
+\usepackage{listings}
+\lstset{
+  frame=single,
+  breaklines=true
+}
+\usepackage{hyperref}
+\usepackage{mathtools}
+%Following 2 lines were added to remove the blank page at the beginning
+\usepackage{atbegshi}% http://ctan.org/pkg/atbegshi
+\AtBeginDocument{\AtBeginShipoutNext{\AtBeginShipoutDiscard}}
+
+%for Tables
+\def\inputGnumericTable{}
+\usepackage[latin1]{inputenc}
+\usepackage{fullpage}
+\usepackage{color}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{calc}
+\usepackage{multirow}
+\usepackage{hhline}
+\usepackage{ifthen}
+
+%New macro definitions
+\newcommand{\mydet}[1]{\ensuremath{\begin{vmatrix}#1\end{vmatrix}}}
+\providecommand{\brak}[1]{\ensuremath{\left(#1\right)}}
+\providecommand{\sbrak}[1]{\ensuremath{{}\left[#1\right]}}
+\providecommand{\norm}[1]{\left\lVert#1\right\rVert}
+\providecommand{\abs}[1]{\left\vert#1\right\vert}
+\newcommand{\solution}{\noindent \textbf{Solution: }}
+\newcommand{\myvec}[1]{\ensuremath{\begin{pmatrix}#1\end{pmatrix}}}
+\let\vec\mathbf
+
+\usepackage{amsmath}
+\usepackage{graphicx}
+%\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\def\fnum@table{\tablename~\thetable}
+\def\fnum@figure{\figurename~\thefigure}
+
+\begin{document}
+
+\begin{center}
+\title{\textbf{Linear Programming}}
+\date{\vspace{-5ex}} %Not to print date automatically
+\maketitle
+\end{center}
+\setcounter{page}{1}
+
+\section{12$^{th}$ Maths - Chapter 12}
+This is Problem-1 from Exercise 12.1
+\begin{enumerate}
+\fi
+\begin{enumerate}
+\item Using cvxpy method: The given problem can be formulated as 
+\begin{align}
+	\max_{\vec{x}} Z &= \myvec{3 & 4}\vec{x} \\
+        \myvec{1 & 4\\
+               -1 &0\\
+	       0 & -1}\vec{x}\preceq & \myvec{4 \\0\\0}
+\end{align}
+Solving using cvxpy, we get
+\begin{align}
+	\label{eq:12/12/1/1/maxval}
+	\max_{\vec{x}} Z &= 12 , 
+	\vec{x} = \myvec{4  \\  0} 
+\end{align}
+\item Using Corner point method: The corner points of  the inequalities are:
+\begin{align}
+	\vec{A} = \myvec{0 \\ 1}\\
+	\vec{B} = \myvec{0 \\ 0} \\
+	\vec{x} = \myvec{4 \\ 0} 
+\end{align}
+Substituting above values of corner points in Equation \eqref{eq:12/12/1/1/Obj_func} to get the value of $Z$, as shown in the Table \ref{tab:widgets}
+\begin{table}[!h]
+	\centering
+	\input{12/12/1/1/tables/det.tex} 
+	\caption{}
+	\label{tab:widgets}
+\end{table}
+
+From the table \ref{tab:widgets}, it is clear that the optimum value and optimum point are similar to what we found in \eqref{eq:12/12/1/1/maxval}. 
+\end{enumerate}
+The relevant figure is as shown in \ref{fig:12/12/1/1/inequality}
+\begin{figure}[!h]
+	\begin{center}
+		\includegraphics[width=\columnwidth]{12/12/1/1/figs/problem1.pdf}
+	\end{center}
+	\caption{}
+	\label{fig:12/12/1/1/inequality}
+\end{figure}

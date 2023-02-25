@@ -1,0 +1,71 @@
+\iffalse
+\documentclass[journal,10pt,twocolumn]{article}
+\usepackage{graphicx}
+\usepackage[margin=0.5in]{geometry}
+\usepackage[cmex10]{amsmath}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{mathtools}
+\title{\textbf{Optimization Assignment - 1}}
+\author{Chirag Shah}
+\date{September 2022}
+
+
+\providecommand{\norm}[1]{\left\lVert#1\right\rVert}
+\providecommand{\abs}[1]{\left\vert#1\right\vert}
+\let\vec\mathbf
+\newcommand{\myvec}[1]{\ensuremath{\begin{pmatrix}#1\end{pmatrix}}}
+\newcommand{\mydet}[1]{\ensuremath{\begin{vmatrix}#1\end{vmatrix}}}
+\providecommand{\brak}[1]{\ensuremath{\left(#1\right)}}
+\providecommand{\lbrak}[1]{\ensuremath{\left(#1\right.}}
+\providecommand{\rbrak}[1]{\ensuremath{\left.#1\right)}}
+\providecommand{\sbrak}[1]{\ensuremath{{}\left[#1\right]}}
+
+\begin{document}
+
+\maketitle
+\paragraph{\textit{Problem Statement}\vspace{1mm}\\  
+\fi
+A tank with rectangular base and rectangular sides, open at the top is to be constructed so that its depth is 2 m and volume is $8 m^3$. If building of tank costs Rs 70 per sq metres for the base and Rs 45 per square metre for sides. What is the cost of least expensive tank? 
+ \\
+ \solution
+ \iffalse
+\section*{\large Given}
+
+
+%---------given----------------%
+\fi
+
+Let l,b and h be the length, width and height of a tank.  
+The volume of tank is given by,
+\begin{align}
+V = lbh
+%8 = lbh
+\end{align}
+\begin{align}
+h=2
+\end{align}
+Cost of Building  \\ \vspace{1mm}
+\begin{align}
+R_b = 70/m^2
+\end{align}
+\begin{align}
+R_s = 45/m^2
+\end{align}
+\iffalse
+\textbf{To Find }\vspace{2mm}\\
+Total least cost of tank\vspace{2mm}  \\ 
+%--------------steps----------------------%
+\textbf{Solution}\vspace{2mm}\\
+Using cvxpy \\ \vspace{4mm}
+\fi
+The given problem can then be formulated as
+
+\begin{align}
+S= \min_{l,b} R_b(lb)+R_s(4(l+b))
+\end{align}
+\begin{align}
+\text{s.t} \quad lb=4
+\end{align}
+which is a disciplined geometric programming (DGP) problem that can be solved using cvxpy. DGP is a subset of log-log-convex program (LLCP). 
+

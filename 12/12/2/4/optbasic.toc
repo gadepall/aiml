@@ -1,0 +1,11 @@
+\contentsline {section}{\numberline {1}Problem statement}{1}{}%
+\contentsline {section}{\numberline {2}Considerations}{1}{}%
+\contentsline {section}{\numberline {3}Plot to optimize machines to get maximum profit}{1}{}%
+\contentsline {section}{\numberline {4}Solution}{1}{}%
+\contentsline {subsection}{\numberline {4.1}Deriving constraints from given data}{1}{}%
+\contentsline {subsection}{\numberline {4.2}Finding points of intersections on x and y-axes by line x+3y=12}{2}{}%
+\contentsline {subsection}{\numberline {4.3}Finding points of intersection on x and y-axes by line 3x+y=12}{2}{}%
+\contentsline {subsection}{\numberline {4.4}Finding point of intersection of lines x+3y=12 and 3x+y=12}{2}{}%
+\contentsline {subsection}{\numberline {4.5}Finding maximum profit from the graph with points}{2}{}%
+\contentsline {section}{\numberline {5}Software}{2}{}%
+\contentsline {section}{\numberline {6}Conclusion}{2}{}%

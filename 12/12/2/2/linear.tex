@@ -1,0 +1,68 @@
+\iffalse
+\documentclass[10pt,twocolumn]{article}
+\usepackage{graphicx}
+\usepackage[margin=0.5in]{geometry}
+\usepackage[cmex10]{amsmath}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{mathtools}
+\title{\textbf{Optimization Assignment - 1}}
+\author{Bole Manideep}
+\date{September 2022}
+
+
+\providecommand{\norm}[1]{\left\lVert#1\right\rVert}
+\providecommand{\abs}[1]{\left\vert#1\right\vert}
+\let\vec\mathbf
+\newcommand{\myvec}[1]{\ensuremath{\begin{pmatrix}#1\end{pmatrix}}}
+\newcommand{\mydet}[1]{\ensuremath{\begin{vmatrix}#1\end{vmatrix}}}
+\providecommand{\brak}[1]{\ensuremath{\left(#1\right)}}
+\providecommand{\lbrak}[1]{\ensuremath{\left(#1\right.}}
+\providecommand{\rbrak}[1]{\ensuremath{\left.#1\right)}}
+\providecommand{\sbrak}[1]{\ensuremath{{}\left[#1\right]}}
+
+\begin{document}
+
+\maketitle
+\paragraph{\textit{Problem Statement} -
+\fi
+One kind of cake requires 200g of flour and 25g of fat, and another kind of cake requires 100g of flour and 50g of fat. Find the maximum number of cakes which can be made from 5kg of flour and 1 kg of fat assuming that there is no shortage of the other ingredients used in making the cakes. 
+\\
+\solution
+\iffalse
+
+\section*{\large Solution}
+\fi
+Let $x,y$ be the number of cakes of first kind and second kind that can be made from the given amount of floor and fat respectively.
+\begin{table}[!ht]
+	\centering
+%\begin{center}
+%    \setlength{\arrayrulewidth}{0.1mm}
+%	\setlength{\tabcolsep}{2pt}
+%	\renewcommand{\arraystretch}{2}
+\begin{tabular}{|c|c|c|c|}
+	\hline 
+    \textbf{Kind of cake} & \textbf{No. of cakes} & \textbf{Flour (in gm)} & \textbf{Fat (in gm)} \\ \hline
+    $Cake_1$ & x &  200 & 25 \\ \hline
+    $Cake_2$ & y & 100 & 50  \\ \hline
+\end{tabular}
+	\caption{}
+	\label{table:12/12/2/2}
+\end{table}
+From the given information,
+\begin{align}
+200x + 100y \leq 5000 \\
+100x + 50y \leq 1000
+\end{align}
+Let P be the maximum number of cakes that can be made from the given amount of flour and fat. The problem can be formulated as
+\begin{align}
+	P = \max_{\vec{x}}\myvec{1&1}\vec{x}\\
+	\myvec{200 & 100 \\ 100 & 50}\vec{x} \leq \myvec{5000 \\ 1000}\\
+	\vec{x} \geq \vec{0}
+\end{align}
+Solving the above equations using cvxpy, we get
+\begin{align}
+	P_{max} = 30,
+	\vec{x} = \myvec{20 \\ 10}
+\end{align}
+

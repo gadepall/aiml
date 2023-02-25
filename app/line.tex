@@ -1,0 +1,50 @@
+\begin{enumerate}[label=\thechapter.\arabic*,ref=\thechapter.\theenumi]
+\numberwithin{equation}{enumi}
+\numberwithin{figure}{enumi}
+\numberwithin{table}{enumi}
+\item The shortest distance between the lines whose vector equations are
+    \begin{align}
+        L_1: \vec{x} = \vec{x_1} + \lambda_1\vec{m_1} \label{eq:app-L1} \\
+        L_2: \vec{x} = \vec{x_2} + \lambda_2\vec{m_2} \label{eq:app-L2}
+    \end{align}
+    is given by   
+		\begin{align}
+            \norm{\vec{A}-\vec{B}} = \norm{\frac{\vec{m_1}^\top\vec{x}\vec{m_1}}{\norm{\vec{m_1}}^2}-\vec{x}}
+            \label{eq:app-dist-parallel}
+        \end{align}
+	\solution
+	Let $\vec{A}$ and $\vec{B}$ be points on lines $L_1$ and $L_2$
+    respectively such that $AB$ is normal to both lines. Define
+    \begin{align}
+        \vec{M} &\triangleq \myvec{\vec{m_1} & \vec{m_2}} \label{eq:app-M-def-line} \\
+        \bm{\lambda} &\triangleq \myvec{\lambda_1\\-\lambda_2} \label{eq:app-lambda-def-line} \\
+        \vec{x} &\triangleq \vec{x_2} - \vec{x_1} \label{eq:app-x-def}
+    \end{align}
+    Then, we have the following equations:
+    \begin{align}
+        \vec{A} = \vec{x_1} + \lambda_1\vec{m_1} \label{eq:app-A-def} \\
+        \vec{B} = \vec{x_2} + \lambda_2\vec{m_2} \label{eq:app-B-def}
+    \end{align}
+    From \eqref{eq:app-A-def} and \eqref{eq:app-B-def}, define the real-valued function
+    $f$ as
+    \begin{align}
+        f\brak{\bm{\lambda}} &\triangleq \norm{\vec{A}-\vec{B}} \\
+	  &= \norm{\vec{M}\bm{\lambda}-\vec{x}} 
+    \end{align}
+From    
+        \eqref{eq:app-f-def}, since $f$ is convex, differentiating
+\begin{align}
+	\norm{\vec{M}\bm{\lambda}-\vec{x}}^2 = \bm{\lambda}^{\top}\vec{M}^\top\vec{M}\bm{\lambda}-2\bm{\lambda}^{\top}\vec{M}^{\top}\vec{x} + \norm{x}^2
+    \end{align}
+		with respect to $\bm{\lambda}$ and equating to zero,
+\begin{align}
+	\vec{M}^\top\brak{\vec{M}\bm{\lambda}-\vec{x}} = \vec{0}
+    \end{align}
+    yielding
+    \begin{align}
+        \vec{M}^\top\vec{M}\bm{\lambda} = \vec{M}^\top\vec{x}
+        \label{eq:app-vec-eqn}
+\end{align}
+
+\end{enumerate}
+
