@@ -1,0 +1,101 @@
+This chapter illustrates the modeling of the voltage-temperature 
+characteristics of the PT-100 RTD (Resistance Temperature Detector) using the 
+least squares method.
+
+\section{Training Data}
+The training data gathered by the PT-100 to train the Arduino is shown in Table
+\ref{tab:train}.
+
+\begin{table}[!ht]
+    \centering
+    \input{pt100/tables/training_data.tex}
+    \caption{Training data.}
+    \label{tab:train}
+\end{table}
+
+The C++ source \texttt{codes/data.cpp} was used along with \textit{platformio}
+to drive the Arduino. The effective schematic circuit diagram is shown in 
+\autoref{fig:ckt}.
+
+\begin{figure}[!ht]
+    \centering
+    \begin{circuitikz} \draw
+        (0,0) to[battery1, l=$5\ V$, invert] (0,2)
+        to[R, l^=$10\ \Omega$] (3,2) to[short, -o] (5,2);
+        \draw (3,2) to[R, l^=$P\ \Omega$] (3,0)
+        -- (0,0);
+        \draw (3,0) to[short, -o] (5,0);
+    \end{circuitikz}
+    \caption{Schematic Circuit Diagram to Measure the Output of PT-100 ($P$).}
+    \label{fig:ckt}
+\end{figure}
+
+\section{Model}
+
+For the PT-100, we use the Callendar-Van Dusen equation
+\begin{align}
+    V(T) &= V(0)\brak{1+AT+BT^2} \\
+    \implies c &= \vec{n}^\top\vec{x} \label{eq:model}
+\end{align}
+where
+\begin{align}
+    c = V(T),\ \vec{n} = V(0)\myvec{1\\A\\B},\ \vec{x} = \myvec{1\\T\\T^2}
+    \label{eq:x-y-theta-def}
+\end{align}
+
+For multiple points, \eqref{eq:model} becomes
+\begin{align}
+    \vec{X}^\top\vec{n} = \vec{C}
+    \label{eq:lsq-eqn}
+\end{align}
+where
+\begin{align}
+    \vec{X} &= \myvec{1&1&\ldots&1\\T_1&T_2&\ldots&T_n\\T_1^2&T_2^2&\ldots&T_n^2} \\
+    \vec{C} &= \myvec{V\brak{T_1}\\V\brak{T_2}\\\vdots\\V\brak{T_n}}
+\end{align}
+and $\vec{n}$ is the unknown.
+
+\section{Solution}
+We approximate $\vec{n}$ by using the least sqaures method. The Python code 
+\texttt{codes/lsq.py} solves for $\vec{n}$.
+
+The calculated value of $\vec{n}$ is
+\begin{align}
+    \vec{n} = \myvec{1.6547\\3.199\times10^{-3}\\-3.9599\times10^{-6}}
+    \label{eq:opt-theta}
+\end{align}
+
+The approximation is shown in Fig. \ref{fig:train}.
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=\columnwidth]{pt100/figs/train.png}
+    \caption{Training the model.}
+    \label{fig:train}
+\end{figure}
+
+Thus, the approximate model is given by
+\begin{align}
+    V(T) &= 1.6547 + \brak{3.199\times10^{-3}}T \nonumber \\
+         &- \brak{3.9599\times10^{-6}}T^2
+    \label{eq:opt-model}
+\end{align}
+
+Notice in \eqref{eq:opt-model} that the coefficient of $T^2$ is negative, and 
+hence the governing function is strictly concave. Hence, we cannot use gradient 
+descent methods to solve this problem.
+
+\section{Validation}
+The validation dataset is shown in Table \ref{tab:valid}. The results of the 
+validation are shown in Fig. \ref{fig:valid}.
+\begin{table}[!ht]
+    \centering
+    \input{pt100/tables/validation_data.tex}
+    \caption{Validation data.}
+    \label{tab:valid}
+\end{table}
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=\columnwidth]{pt100/figs/valid.png}
+    \caption{Validating the model.}
+    \label{fig:valid}
+\end{figure}
