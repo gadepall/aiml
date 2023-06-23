@@ -1,0 +1,118 @@
+\section{Introduction}
+We test the utility of the $K$-means algorithm in assigning grades
+as compared to estimating the grades using the standard normal 
+distribution.
+
+We consider the scores of $N = 94$ students who have taken a course in the 
+Indian Institute of Technology, Hyderabad (IITH) as our dataset.
+
+\section{Fitting a Gaussian Curve}
+Since $N$ is not very large, given the scores of each student 
+$x_i,\ 1 \le i \le N$, we can compute the population mean and population 
+variance as
+
+\begin{align}
+    \mu &= \mean{x} \\
+    \sigma^2 &= \mean{\brak{x-\mu}^2}
+    \label{eq:pop-param}
+\end{align}
+
+We assume that the scores $x \sim N\brak{\mu,\sigma^2}$. Thus, we compute the
+$Z$-scores as
+\begin{align}
+    Z = \frac{x-\mu}{\sigma}
+\end{align}
+
+The grades are assigned as per Table \ref{tab:grade-scheme}.
+\begin{table}[!ht]
+    \centering
+    \input{grading/tables/grades.tex}
+    \caption{Grading Scheme.}
+    \label{tab:grade-scheme}
+\end{table}
+
+The Python code \texttt{codes/grades\_norm.py} takes the given input 
+population dataset \texttt{marks.xlsx} and assigns grades appropriately. 
+The grades are output to \texttt{grades.xlsx}.
+
+\section{K-Means Clustering}
+$K$-Means clustering is an unsupervised classification model, which attempts to 
+cluster unlabeled data in order to gain more structure from it. 
+
+We frame this requirement as an optimization problem. For a set of data points 
+$\cbrak{\vec{x}_i}_{i=1}^N$ and means $\cbrak{\vec{\mu}_i}_{i=1}^K$, we define
+for $1 \le n \le N,\ 1 \le k \le K$,
+\begin{align}
+    r_{nk} \triangleq
+    \begin{cases}
+        1 & \argmin_{j}\norm{\vec{x}_n-\vec{\mu}_j} = k \\
+        0 & \textrm{otherwise}
+    \end{cases}
+    \label{eq:rnk-def}
+\end{align}
+Thus, we need to find points $\vec{\mu}_k$ minimizing the cost function
+\begin{align}
+    J \triangleq \sum_{n=1}^N\sum_{k=1}^Kr_{nk}\norm{\vec{x}_n-\vec{\mu}_k}^2
+    \label{eq:cost}
+\end{align}
+Clearly, \eqref{eq:cost} is a quadratic function of $\vec{\mu}_k$.
+Differentiating with respect to $\vec{\mu}_k$ and setting the derivative
+to zero, we get
+\begin{align}
+    \sum_{n=1}^N2\vec{\mu}_kr_{nk}\brak{\vec{x}_n-\vec{\mu}_k} = 0 \\
+    \implies \vec{{\mu_k}} = \frac{\sum_{n=1}^Nr_{nk}\vec{x}_n}{\sum_{n=1}^Nr_{nk}} = \frac{\vec{Xr}_k}{\vec{1}^\top\vec{r}_k}
+    \label{eq:M-step}
+\end{align}
+where
+\begin{align}
+    \vec{X} &\triangleq \myvec{\vec{x}_1&\vec{x}_2&\ldots&\vec{x}_n} \\
+    \vec{r}_k &\triangleq \myvec{r_{1k}&r_{2k}&\ldots&r_{nk}}^\top \\
+    \vec{1} &\triangleq \myvec{1&1&\ldots&1}^\top
+    \label{eq:M-defs}
+\end{align}
+From \eqref{eq:M-step}, we see that the optimum is attained when $\vec{\mu}_k$ 
+is set to the expectation of the $\vec{x}_n$ with respect to $r_{nk}$.
+
+Thus, the $K$-means algorithm is essentially an \textit{EM algorithm}, where 
+each iteration consists of two steps.
+\begin{enumerate}
+    \item \textit{E Step}: Calculate the $K$-expected values
+    \begin{align}
+        \tilde{\vec{\mu}_k} \triangleq \frac{\sum_{n=1}^Nr_{nk}\vec{x}_n}{\sum_{n=1}^Nr_{nk}}
+        \label{eq:E-step}
+    \end{align}
+    for $1 \le k \le K$.
+    \item \textit{M Step}: Assign $\vec{\mu}_k \leftarrow \tilde{\vec{\mu}_k}$
+    for $1 \le k \le K$.
+\end{enumerate}
+
+\section{Results}
+The grade distribution using each method is shown in Fig. \ref{fig:gauss-dist}
+and Fig. \ref{fig:kmeans-dist}.
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=\columnwidth]{grading/figs/grades_gauss.png}
+    \caption{Grade distribution using a Gaussian curve.}
+    \label{fig:gauss-dist}
+\end{figure}
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=\columnwidth]{grading/figs/grades_kmeans.png}
+    \caption{Grade distribution using the $K$-means algorithm.}
+    \label{fig:kmeans-dist}
+\end{figure}
+Based on the results, we can make the following observations:
+\begin{enumerate}
+    \item Grading using the Gaussian distribution would lead to many students
+    failing the course, while this is not the case using the $K$-means
+    algorithm.
+    \item Using the Gaussian distribution is quite unfair, since there could
+    be students with quite similar marks but with a difference in grade, just
+    because they lie on either side of a predefined boundary.
+    \item The $K$-means algorithm allows for better decision boundaries,
+    depending on how skewed the performance of the students is, accordingly
+    to the difficulty of the course.
+    \item Unlike the Gaussian distribution, the $K$-means algorithm can be
+    used for a fairer assignment of the grades, no matter how skewed the 
+    performance of students in a course is.
+\end{enumerate}

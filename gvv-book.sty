@@ -14,7 +14,8 @@
 \usepackage[anticlockwise,figuresright]{rotating}
 \usepackage{pstricks}
 \usepackage{wrapfig}
-\usepackage{pstcol,pst-grad}
+\usepackage{pstricks}
+%\usepackage{pstcol,pst-grad}
  \usepackage{bm}
 \usepackage{enumitem}
 \usepackage{listings}
@@ -29,7 +30,7 @@
     \usepackage{lscape}     
     \usepackage{gensymb}     
 
-
+    \usepackage{circuitikz}
 \newif\ifbibunnumbered\global\bibunnumberedtrue%
 %\DeclareOption{number}{\xdef\@biboptions{numbers}}%
 %\DeclareOption{numbers}{\xdef\@biboptions{numbers}}%
@@ -2044,6 +2045,8 @@ No query.\par%
 %\let\StandardTheFigure\thefigure
 %\let\vec\boldsymbol
 \let\vec\mathbf
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
 %\renewcommand{\vec}[1]{\boldsymbol{\mathbf{#1}}}
 \def\inputGnumericTable{}                                 %%
 \lstset{
