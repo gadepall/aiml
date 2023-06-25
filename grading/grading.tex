@@ -1,10 +1,10 @@
 \section{Introduction}
+
 We test the utility of the $K$-means algorithm in assigning grades
 as compared to estimating the grades using the standard normal 
-distribution.
-
-We consider the scores of $N = 94$ students who have taken a course in the 
-Indian Institute of Technology, Hyderabad (IITH) as our dataset.
+distribution. We consider the scores of $N = 94$ students who have taken 
+a course in the  Indian Institute of Technology, Hyderabad (IITH) as our 
+dataset.
 
 \section{Fitting a Gaussian Curve}
 Since $N$ is not very large, given the scores of each student 
@@ -31,9 +31,18 @@ The grades are assigned as per Table \ref{tab:grade-scheme}.
     \label{tab:grade-scheme}
 \end{table}
 
-The Python code \texttt{codes/grades\_norm.py} takes the given input 
-population dataset \texttt{marks.xlsx} and assigns grades appropriately. 
-The grades are output to \texttt{grades.xlsx}.
+The Python code
+\begin{lstlisting}
+grading/codes/grades_norm.py
+\end{lstlisting} 
+takes the given input population dataset 
+\begin{lstlisting}
+grading/codes/marks.xlsx
+\end{lstlisting} 
+and assigns grades appropriately. The grades are output to 
+\begin{lstlisting}
+grading/codes/grades_norm.xlsx
+\end{lstlisting}
 
 \section{K-Means Clustering}
 $K$-Means clustering is an unsupervised classification model, which attempts to 
