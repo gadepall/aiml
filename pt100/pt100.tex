@@ -1,6 +1,6 @@
-This chapter illustrates the modeling of the voltage-temperature 
-characteristics of the PT-100 RTD (Resistance Temperature Detector) using the 
-least squares method.
+This chapter illustrates the use of the least squares method in finding the
+voltage across the PT-100 RTD (Resistance Temperature Detector) as a
+function of temperature.
 
 \section{Training Data}
 The training data gathered by the PT-100 to train the Arduino is shown in Table
@@ -13,9 +13,12 @@ The training data gathered by the PT-100 to train the Arduino is shown in Table
     \label{tab:train}
 \end{table}
 
-The C++ source \texttt{codes/data.cpp} was used along with \textit{platformio}
-to drive the Arduino. The effective schematic circuit diagram is shown in 
-\autoref{fig:ckt}.
+The C++ source file
+\begin{lstlisting}
+pt100/codes/data.cpp
+\end{lstlisting}
+was used along with \textit{platformio} to drive the Arduino. The effective 
+schematic circuit diagram is shown in \autoref{fig:ckt}.
 
 \begin{figure}[!ht]
     \centering

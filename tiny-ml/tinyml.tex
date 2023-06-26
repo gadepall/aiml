@@ -1,4 +1,6 @@
-This chapter illustrates a use case of TinyML in gesture detection.
+This chapter illustrates a use case of TinyML in gesture detection. A video
+demonstration of the experiment described below is present in the 
+\href{https://github.com/gadepall/aiml#TinyML}{README} of the repository.
 
 \section{Assets}
 \begin{enumerate}
@@ -16,26 +18,31 @@ This chapter illustrates a use case of TinyML in gesture detection.
     to gather the data.
     \item Press \texttt{Stop Recording} when you are done and export the 
     recordings as a zip file.
-    \item Unzip and rename the CSV files appropriately in \texttt{tiny-ml/data}.
+    \item Unzip and rename the CSV files appropriately in
+    \begin{lstlisting}
+tiny-ml/data
+    \end{lstlisting}
     \item In the same directory, run the following commands:
     \begin{lstlisting}
 gcc -O2 format.c
 ./a.out
     \end{lstlisting}
-    \item You will end up with two more CSV files \texttt{train.csv} and
-    \texttt{test.csv}.
+    \item Two more CSV files \texttt{train.csv} and \texttt{test.csv} will be 
+    created in the same directory.
 \end{enumerate}
 
 \section{Model}
 \begin{enumerate}
-    \item In \texttt{tiny-ml/codes}, run the Python script
+    \item Run the Python script
     \begin{lstlisting}
-python bin_class.py
+tiny-ml/codes/bin_class.py
     \end{lstlisting}
     \item Tweak the neural network parameters in this file if the accuracy is
     not satisfactory.
-    \item The neural network model will be present as a bytestream in 
-    \texttt{tiny-ml/codes/client/src/gesture\_model.h}
+    \item The neural network model will be present as a bytestream in
+    \begin{lstlisting}
+tiny-ml/codes/client/src/gesture_model.h  
+    \end{lstlisting}
 \end{enumerate}
 
 \section{Implementation}
@@ -59,6 +66,6 @@ pio device monitor -b 115200
     \end{lstlisting}
     \item Start recording in the Sensor Logger app and perform the gestures.
     Verify whether the model works as intended.
-    \item Implement a decade counter which can increment and decrement based 
-    on the detected gesture.
+    \item Implement a decade counter which can increment and decrement the 
+    displayed value based on the detected gesture.
 \end{enumerate}

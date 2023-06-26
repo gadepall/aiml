@@ -18,16 +18,16 @@ ESP32.
     \item Connect the ESP32 board to your Android Phone.
     \item Generate the firmware by entering the following commands.
         \begin{lstlisting}
-$ cd codes
-$ pio run
+cd ugv-beacon/codes
+pio run
         \end{lstlisting}
     \item Go to ArduinoDroid and select
-        \begin{lstlisting}
+        \begin{lstlisting}[literate={-}{$\rightarrow$ }{1}]
 Actions - Upload - Upload Precompiled
         \end{lstlisting}
     and choose the firmware file at
         \begin{lstlisting}
-codes/.pio/build/firmware.hex
+ugv-beacon/codes/.pio/build/firmware.hex
         \end{lstlisting}
     \item Now put the phone at a reasonable distance from the UGV with no 
     obstacles in the way and then turn on the hotspot. The UGV should travel
