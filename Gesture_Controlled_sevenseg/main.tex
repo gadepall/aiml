@@ -9,16 +9,16 @@ This chapter demonstrates controlling seven segment display with the Gyroscope s
 \section{Setup}
 \begin{enumerate}
     \item Install the apk on Mobile, this application is required for accessing the sensor on mobile and send the sensor data to the vaman board
-    \begin{lstlisting}
-    cd Gesture_Controlled_sevenseg
-    Click on the apk to Install and give necessary permissions
-    \end{lstlisting}
+\begin{lstlisting}
+cd Gesture_Controlled_sevenseg
+Click on the apk to Install and give necessary permissions
+\end{lstlisting}
     \item Execute the Following code
-    \begin{lstlisting}
-    cd Gesture_Contolled_sevenseg/codes/sevenseg
-    pio run
-    pio run -t upload
-    \end{lstlisting}
+\begin{lstlisting}
+cd Gesture_Contolled_sevenseg/codes/sevenseg
+pio run
+pio run -t upload
+\end{lstlisting}
 \end{enumerate}
 \section{Connections}
 \begin{enumerate}
@@ -39,10 +39,10 @@ This chapter demonstrates controlling seven segment display with the Gyroscope s
 	    \label{table:connections}
 	\end{table}
     \item After uploading the code connect the vaman ip address to mobile application
-    \begin{lstlisting}
-    ifconfig
-    nmap -sn 192.168.x.0/24
-    \end{lstlisting}
+\begin{lstlisting}
+ifconfig
+nmap -sn 192.168.x.0/24
+\end{lstlisting}
     \item Consider 192.168.x.0 as example and replace the ip address with the one displayed for ifconfig address with "x".
     \item Type IP address displayed for vaman board on the mobile application
     \item Then click on start on the mobile application
@@ -54,11 +54,11 @@ This chapter demonstrates controlling seven segment display with the Gyroscope s
     \item When mobile is tilted Left 2 is displayed on the seven segment display
     \item When mobile is tilted Right 3 is displayed on the seven segment display
     \item When mobile is tilted Back 4 is displayed on the seven segment display
-    \item When there is no movement in then 0 is displayed, indicates stop
+    \item When there is no movement then 0 is displayed which indicates stop
     \item Repeat the above process for controlling the Toy car using the Gyroscope sensor
-    \begin{lstlisting}
-    cd Gesture_Contolled_sevenseg/codes/toycar
-    pio run
-    pio run -t upload
-    \end{lstlisting}
+\begin{lstlisting}
+cd Gesture_Contolled_sevenseg/codes/toycar
+pio run
+pio run -t upload
+\end{lstlisting}
 \end{enumerate}
