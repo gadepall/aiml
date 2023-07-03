@@ -1,4 +1,4 @@
-This chapter demonstrates controlling seven segment display with the Gyroscope sensor present on the mobile. 
+This chapter demonstrates controlling seven segment display using VAMAN-ESP with the Gyroscope sensor present on the mobile. 
 
 \section{Commponents}
 \begin{table}[!ht]
@@ -8,7 +8,7 @@ This chapter demonstrates controlling seven segment display with the Gyroscope s
 	\end{table}
 \section{Setup}
 \begin{enumerate}
-    \item Install the apk on Mobile, this application is required for accessing the sensor on mobile and send the sensor data to the vaman board
+    \item Install the apk on Mobile, this application is required for accessing the sensor on mobile and send the sensor data to the vaman-esp.
 \begin{lstlisting}
 cd Gesture_Controlled_sevenseg
 Click on the apk to Install and give necessary permissions
@@ -31,7 +31,7 @@ pio run -t upload
 		\caption{Seven Segment pins}
 		\label{fig:sevenseg}
 	\end{figure}
-    \item Connect the seven segment to the vaman as shown in Table \ref{table:connections}
+    \item Connect the seven segment to the vaman-esp as shown in Table \ref{table:connections}
     	\begin{table}[!ht]
 	    \centering
 	    \input{Gesture_Controlled_sevenseg/tables/connections.tex}
