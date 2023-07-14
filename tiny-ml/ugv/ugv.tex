@@ -1,0 +1,85 @@
+This section illustrates a use case of TinyML in controlling an unmanned ground 
+vehicle (UGV). A video demonstration of the experiment described below is 
+linked in the \href{https://github.com/gadepall/aiml#TinyML}{README} of the 
+repository.
+
+\subsection{Components}
+\begin{table}[!ht]
+    \centering
+    \input{tiny-ml/ugv/tables/ugv-components.tex}
+    \caption{Components Required for Controlling the UGV Using TinyML.}
+    \label{tab:ugv-components}
+\end{table}
+
+\subsection{Training Data}
+\begin{enumerate}
+    \item Download the Sensor Logger app from Google Play Store.
+    \item In the settings on the app, set the sampling frequency to maximum, 
+    and turn off logging uncalibrated data. Record from the device orientation 
+    sensor only.
+    \item Press \texttt{Start Recording}, and perform the gestures 100 times
+    to gather the data.
+    \item Press \texttt{Stop Recording} when you are done and export the 
+    recordings as a zip file.
+    \item Unzip and rename the CSV files appropriately in
+    \begin{lstlisting}
+tiny-ml/ugv/data
+    \end{lstlisting}
+    \item In the same directory, run the following commands:
+    \begin{lstlisting}
+gcc -O2 format.c
+./a.out
+    \end{lstlisting}
+    \item Two more CSV files \texttt{train.csv} and \texttt{test.csv} will be 
+    created in the same directory.
+\end{enumerate}
+
+\subsection{Model}
+\begin{enumerate}
+    \item Run the Python script
+    \begin{lstlisting}
+tiny-ml/ugv/codes/multi_class.py
+    \end{lstlisting}
+    \item Tweak the neural network parameters in this file if the accuracy is
+    not satisfactory.
+    \item The neural network model will be present as a bytestream in
+    \begin{lstlisting}
+tiny-ml/ugv/codes/client/src/gesture_model.h  
+    \end{lstlisting}
+\end{enumerate}
+
+\subsection{Implementation}
+\begin{enumerate}
+    \item Find the IP address of your phone by using the \texttt{ifconfig}
+    command.
+    \item In the Sensor Logger app, set the HTTP Push URL to
+    \begin{lstlisting}
+http://<IP>:5000/ugv
+    \end{lstlisting}
+    in the app settings. Enable the HTTP Push feature.
+    \item Run the server with the following commands.
+    \begin{lstlisting}
+cd tiny-ml/ugv/codes/server
+flask run --host <IP>
+    \end{lstlisting}
+    \item Compile and upload the \emph{platformio} project in 
+    \begin{lstlisting}
+tiny-ml/ugv/codes/client
+    \end{lstlisting}
+    to the Vaman-ESP32 using USB-UART.
+    \item Attach a serial monitor to the terminal with the following command:
+    \begin{lstlisting}
+pio device monitor -b 115200
+    \end{lstlisting}
+    \item Start recording in the Sensor Logger app and perform the gestures.
+    Verify whether the model works as intended.
+    \item Detach the USB-UART from the Vaman-ESP32, and make connections
+    to the inputs of the L293 Motor Driver onboard the assembled UGV as per
+    \autoref{tab:ugv-connections}.
+    \begin{table}[!ht]
+        \centering
+        \input{tiny-ml/ugv/tables/ugv-connections.tex}
+        \caption{Connections Between Vaman-ESP32 and L293 Motor Driver.}
+        \label{tab:ugv-connections}
+    \end{table} 
+\end{enumerate}

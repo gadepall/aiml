@@ -1,21 +1,19 @@
 This chpater demonstrates the use of machine learning in beacon tracking using 
 an unmanned ground vehicle (UGV) and a WiFi-enabled microcontroller such as the 
-ESP32.
+Vaman-ESP32.
 
-\section{Assets}
-\begin{enumerate}
-    \item UGV chassis with DC motors
-    \item ESP32 microcontroller with Type-B USB cable
-    \item L293D Motor Driver IC
-    \item Breadboard and Jumper Wires
-    \item Android phone
-    \item (Optional) USB 2.0/3.0 Hub
-\end{enumerate}
+\section{Components}
+\begin{table}[!ht]
+    \centering
+    \input{ugv-beacon/tables/ugv-components.tex}
+    \caption{Components Required for Beacon Tracking Using the Vaman-ESP32.}
+    \label{tab:ugv-beacon-components}
+\end{table}
 
 \section{Procedure}
 \begin{enumerate}
     \item Make the connections as per the wiring diagram in Fig. \ref{fig:beacon}.
-    \item Connect the ESP32 board to your Android Phone.
+    \item Connect the Vaman-ESP32 board to your Android Phone using USB-OTG.
     \item Generate the firmware by entering the following commands.
         \begin{lstlisting}
 cd ugv-beacon/codes
