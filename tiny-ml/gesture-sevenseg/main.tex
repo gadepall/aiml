@@ -1,0 +1,63 @@
+This section demonstrates controlling seven segment display with the Gyroscope sensor present on the mobile. 
+
+\subsection{Commponents}
+\begin{table}[!ht]
+	    \centering
+	    \input{tiny-ml/gesture-sevenseg/tables/components.tex}
+	    \caption{Components}
+	\end{table}
+\subsection{Setup}
+\begin{enumerate}
+    \item Install the apk on Mobile, this application is required for accessing the sensor on mobile and send the sensor data to the vaman board
+\begin{lstlisting}
+cd tiny-ml/gesture-sevenseg
+Click on the apk to Install and give necessary permissions
+\end{lstlisting}
+    \item Execute the Following code
+\begin{lstlisting}
+cd tiny-ml/gesture-sevenseg/codes/sevenseg
+pio run
+pio run -t upload
+\end{lstlisting}
+\end{enumerate}
+\subsection{Connections}
+\begin{enumerate}
+    \item Pin diagram of seven segment is shown in Fig. \ref{fig:sevenseg}
+    	\begin{figure}[!ht]
+		\begin{center}
+		\resizebox {0.5\columnwidth} {!} {\input{tiny-ml/gesture-sevenseg/figs/sevenseg.tex}}
+		\end{center}
+		\caption{Seven Segment pins}
+		\label{fig:sevenseg}
+	\end{figure}
+    \item Connect the seven segment to the vaman as shown in Table \ref{table:connections}
+    	\begin{table}[!ht]
+	    \centering
+	    \input{tiny-ml/gesture-sevenseg/tables/connections.tex}
+	    \caption{Connections}
+	    \label{table:connections}
+	\end{table}
+    \item After uploading the code connect the vaman ip address to mobile application
+\begin{lstlisting}
+ifconfig
+nmap -sn 192.168.x.0/24
+\end{lstlisting}
+    \item Consider 192.168.x.0 as example and replace the ip address with the one displayed for ifconfig address with "x".
+    \item Type IP address displayed for vaman board on the mobile application
+    \item Then click on start on the mobile application
+\end{enumerate}
+\subsection{Execution}
+\begin{enumerate}
+    \item Now tilt the mobile for the change in the seven segment display
+    \item When mobile is tilted Forward 1 is displayed on the seven segment display
+    \item When mobile is tilted Left 2 is displayed on the seven segment display
+    \item When mobile is tilted Right 3 is displayed on the seven segment display
+    \item When mobile is tilted Back 4 is displayed on the seven segment display
+    \item When there is no movement then 0 is displayed which indicates stop
+    \item Repeat the above process for controlling the Toy car using the Gyroscope sensor
+\begin{lstlisting}
+cd tiny-ml/gesture-sevenseg/codes/toycar
+pio run
+pio run -t upload
+\end{lstlisting}
+\end{enumerate}
